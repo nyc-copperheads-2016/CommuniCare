@@ -4,7 +4,7 @@ class CreateOnCallCaregivers < ActiveRecord::Migration
       t.string :education, null: false
       t.string :credentials
       t.string :about, null: false
-      t.string :specialties
+      t.string :specialities
       t.string :experience
       t.string :hobbies
 
