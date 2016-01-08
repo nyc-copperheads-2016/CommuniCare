@@ -8,7 +8,11 @@ class CreateLogins < ActiveRecord::Migration
       t.string :password_digest
       t.integer :zipcode, null: false
       t.references :loginable, polymorphic:true, index: true
+
       t.string :phone, null: false
+      t.string :first_name, null: false
+      t.string :last_name, null: false
+
       t.timestamps null: false
     end
   end

@@ -1,0 +1,16 @@
+<div align="center">
+<h3> <%= form_tag new_login_path, class:'login_form' do %>
+  <div>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </div>
+  <div>
+    <%=label_tag :password %>
+    <%= text_field_tag :password %>
+  </div>
+    <%= submit_tag 'Login' %>
+  <% end %>
+  </div>
+</h3>
+
+<h1> Change This! </h1>
