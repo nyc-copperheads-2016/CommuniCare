@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :meetings
   get 'search/on_call_caregivers' => 'search#OCC'
   get 'search/primary_caregivers' => 'search#PC'

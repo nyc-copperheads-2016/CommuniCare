@@ -16,6 +16,9 @@
 
 </head>
 <body>
+  <%= form_tag :search_on_call_caregivers_path%>
+    <%= select :distance, [5, 10, 20, 50, 100]%>
+  <%end%>
 
 <%= yield %>
 
