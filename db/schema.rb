@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108160900) do
+ActiveRecord::Schema.define(version: 20160108214657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160108160900) do
     t.string   "duration"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.integer  "on_call_caregiver_id", null: false
+    t.string   "type",                 null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "caregiver_relationships", force: :cascade do |t|
@@ -35,26 +42,30 @@ ActiveRecord::Schema.define(version: 20160108160900) do
   create_table "logins", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "address",         null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
     t.string   "password_digest"
     t.integer  "zipcode",         null: false
     t.integer  "loginable_id"
     t.string   "loginable_type"
-    t.integer  "phone",           null: false
+    t.string   "phone",           null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "logins", ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id", using: :btree
 
   create_table "on_call_caregivers", force: :cascade do |t|
-    t.string   "education",   null: false
+    t.string   "education",    null: false
     t.string   "credentials"
-    t.string   "about",       null: false
-    t.string   "specialties"
+    t.string   "about",        null: false
+    t.string   "specialities"
     t.string   "experience"
     t.string   "hobbies"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "patients", force: :cascade do |t|
