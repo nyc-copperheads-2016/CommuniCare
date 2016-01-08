@@ -4,7 +4,8 @@ class OnCallCaregiver < ActiveRecord::Base
   has_one :login, :as => :loginable
   has_many :badges
 
-
   validates_presence_of :education
   validates_presence_of :about
+
 end
+
