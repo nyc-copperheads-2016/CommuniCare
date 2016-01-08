@@ -2,6 +2,7 @@
 External Resources
 Integrating Twilio Text Into A Rails App: https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 Great CSS/style templates: http://templated.co/
+List of Useful Responsive List and Navigation Menus: http://exisweb.net/incredibly-useful-list-of-responsive-navigation-and-menu-patterns
 
 
 
