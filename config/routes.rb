@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post 'search/on_call_caregivers' => 'search#OCC'
-  post 'search/primary_caregivers' => 'search#PC'
-
+  get 'search/on_call_caregivers' => 'search#OCC'
+  get 'search/primary_caregivers' => 'search#PC'
+  resources :on_call_caregivers, only: [:show]
   # get 'on_call_caregivers/search' =>
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

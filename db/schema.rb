@@ -42,11 +42,15 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   create_table "logins", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "address",         null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
     t.string   "password_digest"
     t.integer  "zipcode",         null: false
     t.integer  "loginable_id"
     t.string   "loginable_type"
-    t.integer  "phone",           null: false
+    t.string   "phone",           null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.float    "latitude"
@@ -56,14 +60,14 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   add_index "logins", ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id", using: :btree
 
   create_table "on_call_caregivers", force: :cascade do |t|
-    t.string   "education",   null: false
+    t.string   "education"
     t.string   "credentials"
-    t.string   "about",       null: false
-    t.string   "specialties"
+    t.string   "about"
+    t.string   "specialities"
     t.string   "experience"
     t.string   "hobbies"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -81,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   end
 
   create_table "primary_caregivers", force: :cascade do |t|
-    t.string   "about_me",   null: false
+    t.string   "about_me"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

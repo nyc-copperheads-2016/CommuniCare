@@ -1,0 +1,21 @@
+<h1>Caretakers in Your Area:</h1>
+<div class="results">
+  <%@caregiver.each do |caregiver| %>
+  <div class="result"
+    <div class="basic-info">
+      <span class="name"><%= caregiver.login.first_name %> <%= caregiver.login.last_name %> </span>
+      <span class="city-state"><%= caregiver.login.city %>, <%= caregiver.login.state %></span>
+    </div>
+    <div class="additional-info">
+
+    <% if caregiver.login.loginable_type == "OnCallCaregiver" %>
+    <p><%= caregiver.about[0..50]%>...</p>
+    <% else %>
+    <p><%= caregiver.about_me[0..50]%>...</p>
+    <% end %>
+    <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id) %></p>
+    </div>
+  <% end %>
+  </div>
+</div>
+
