@@ -1,6 +1,14 @@
 <div align="center">
 <h1> Register:</h1>
-<h3> <%= form_for @login do |f| %>
+
+<div>
+  <% if @login.errors.any? %>
+  <% @login.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+</div>
+<h3> <%= form_for @login, :url => {:controller => "logins", :action => "create"} do |f| %>
   <div>
 
     <div>
@@ -98,7 +106,6 @@
       ['CommuniHelper','OnCallCaregiver']
     ] %>
     </div>
-
    <div>
     <%=f.label :password %>
     <%= f.password_field :password %>

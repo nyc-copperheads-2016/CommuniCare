@@ -16,6 +16,21 @@
 
 </head>
 <body>
+  <nav>
+
+    Search for Caregivers in Your Area
+    <%= form_tag :search_on_call_caregivers, method: :get do %>
+      <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
+      <%= submit_tag "Search" %>
+    <%end%>
+  </nav>
+  <div id="flash-container">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "flash_#{name}" %>
+      <% end %>
+    <% end %>
+  </div>
 
 <%= yield %>
 
