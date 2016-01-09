@@ -7,6 +7,7 @@ class Login < ActiveRecord::Base
   validates :zipcode, length:{maximum:5}
   validates_format_of :phone, :with => /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, :on => :create
   belongs_to :loginable, :polymorphic => true
+  before_create :is_geocoded
 
   geocoded_by :city_state
   after_validation :geocode
@@ -21,5 +22,9 @@ class Login < ActiveRecord::Base
       loginables << login.loginable
     end
     loginables
+  end
+
+  def is_geocoded
+    errors.add(:geocode_error, "Please enter valid city and state") unless geocoded?
   end
 end
