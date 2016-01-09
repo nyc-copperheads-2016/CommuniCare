@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :meetings
   get 'search/on_call_caregivers' => 'search#OCC'
   get 'search/primary_caregivers' => 'search#PC'
   resources :on_call_caregivers, only: [:show, :update, :edit]
-  resources :primary_caregivers, only: [:show, :update, :edit]
+  resources :primary_caregivers, only: [:show, :update, :edit] do
+    resources :patients
+  end
   # get 'on_call_caregivers/search' =>
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
-  resources :logins, only: [:create, :destroy, :new]
+  resources :logins, only: [:create, :destroy, :new, :edit, :update]
 
   get 'login' => 'sessions'
   get 'logout'=> 'sessions#destroy'

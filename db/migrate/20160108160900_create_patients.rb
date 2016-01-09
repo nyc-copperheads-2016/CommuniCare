@@ -10,6 +10,7 @@ class CreatePatients < ActiveRecord::Migration
       t.string :background, null:false
       t.integer :age, null: false
       t.string :hobbies, null: false
+      t.references :primary_caregiver
 
       t.timestamps null: false
     end

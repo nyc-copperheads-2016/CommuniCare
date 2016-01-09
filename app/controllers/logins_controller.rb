@@ -2,7 +2,6 @@ class LoginsController < ApplicationController
 
   def new
     @login = Login.new
-
   end
 
   def create
@@ -21,14 +20,35 @@ class LoginsController < ApplicationController
     if @login.save
       flash[:notice] = 'You Are Now Registered!'
       session[:login_id] = @login.id
+      binding.pry
       redirect_to root_path
     else
       render :new
     end
   end
 
+  def update
+      pcc = PrimaryCaregiver.find_by(id: params[:id])
+      pcc.login.update_attributes(pcc_login_params)
+    if pcc.save
+      redirect_to root_path
+    else
+      redirect_to primary_caregiver_path(primary_caregiver.id)
+    end
+  end
+
+  def edit
+    @pcc = PrimaryCaregiver.find_by(id: params[:id])
+  end
+
+  end
+
 private
+
   def login_params
     params.require(:login).permit(:email,:address,:city, :state, :password, :zipcode, :phone, :first_name, :last_name)
+  end
+  def pcc_login_params
+      params.require(:login).permit(:first_name,:last_name,:address,:city,:state,:phone)
   end
 end
