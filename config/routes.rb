@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 
   root 'welcome#index'
+  resources :appointments
 
 
   # Example of regular route:
