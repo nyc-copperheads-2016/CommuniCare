@@ -1,7 +1,7 @@
 class PrimaryCaregiversController < ApplicationController
   def edit
-    @pcc = PrimaryCaregiver.find_by(id: params[:id])
   end
+
 
   def update
     pcc = PrimaryCaregiver.find_by(id: params[:id])
@@ -13,8 +13,14 @@ class PrimaryCaregiversController < ApplicationController
     end
   end
 
+  def show
+    @caregiver = PrimaryCaregiver.find_by(id: params[:id])
+  end
+
   private
     def pcc_params
       params.require(:primary_caregiver).permit(:about_me)
     end
+
+
 end

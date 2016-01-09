@@ -10,10 +10,11 @@
 
     <% if caregiver.login.loginable_type == "OnCallCaregiver" %>
     <p><%= caregiver.about[0..50]%>...</p>
+    <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id) %></p>
     <% else %>
     <p><%= caregiver.about_me[0..50]%>...</p>
+    <p><%= link_to 'See Profile', primary_caregiver_path(caregiver.id) %></p>
     <% end %>
-    <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id) %></p>
     </div>
   <% end %>
   </div>

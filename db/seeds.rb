@@ -1,5 +1,7 @@
 pc1 = PrimaryCaregiver.create!(about_me: Faker::Lorem.paragraph)
 pcl1 = Login.create!(email: "primary1@care.com", password:"123456", password_confirmation: "123456", address: Faker::Address.street_address, city: "New York City", state: "NY", zipcode: Faker::Address.zip, phone: "914-555-5555", loginable_id: pc1.id, loginable_type: "PrimaryCaregiver", first_name: "John", last_name: "Smith")
+patient = Patient.create!(gender: "male", habits: "throws chairs", routine: "gets up", ailments: "Parkinson's", medication: "Vicodin", name: "Johnny", background: "has been sick for 5 years", age: 80, hobbies: "chess, cards", primary_caregiver: pc1)
+
 
 occ1 = OnCallCaregiver.create!(education: Faker::University.name, credentials: Faker::Company.profession, about: Faker::Lorem.paragraph, specialities: Faker::Lorem.paragraph, experience: Faker::Lorem.paragraph, hobbies: Faker::Lorem.paragraph)
 occl1 = Login.create!(email: "oncall1@care.com", password:"123456", password_confirmation: "123456", address: Faker::Address.street_address, city: "Jersey City", state: "NJ", zipcode: Faker::Address.zip, phone: "914-555-5555", loginable_id: occ1.id, loginable_type: "OnCallCaregiver", first_name: "Jane", last_name: "Doe")
