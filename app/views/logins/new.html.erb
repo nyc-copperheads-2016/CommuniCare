@@ -91,14 +91,22 @@
      <%= f.label :Email %>
      <%= f.text_field :email %>
     </div>
+    <div>
+      <%= f.label :Type %>
+      <%= f.select :loginable_type, [
+      ['Primary Caregiver', 'PrimaryCaregiver'],
+      ['CommuniHelper','OnCallCaregiver']
+    ] %>
+    </div>
 
    <div>
     <%=f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
    </div>
     <%= f.submit 'Login' %>
   <% end %>
   </div>
 </h3>
+
 
 
