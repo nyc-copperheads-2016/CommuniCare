@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108214657) do
-
+ActiveRecord::Schema.define(version: 20160108235144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,13 +42,11 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   create_table "logins", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "address",         null: false
-    t.string   "city",            null: false
-    t.string   "state",           null: false
     t.string   "password_digest"
     t.integer  "zipcode",         null: false
     t.integer  "loginable_id"
     t.string   "loginable_type"
-    t.string   "phone",           null: false
+    t.integer  "phone",           null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.float    "latitude"
@@ -58,15 +55,22 @@ ActiveRecord::Schema.define(version: 20160108214657) do
 
   add_index "logins", ["loginable_type", "loginable_id"], name: "index_logins_on_loginable_type_and_loginable_id", using: :btree
 
+  create_table "meetings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "on_call_caregivers", force: :cascade do |t|
-    t.string   "education",    null: false
+    t.string   "education",   null: false
     t.string   "credentials"
-    t.string   "about",        null: false
-    t.string   "specialities"
+    t.string   "about",       null: false
+    t.string   "specialties"
     t.string   "experience"
     t.string   "hobbies"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "patients", force: :cascade do |t|
