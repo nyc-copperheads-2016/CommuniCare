@@ -17,12 +17,30 @@
 </head>
 <body>
   <nav>
+    <% if logged_in? %>
+      <ul>
+        <li>Welcome, <%= current_user.email %></li>
+        <li><%= link_to 'Sign Out', logout_path %></li>
+        <% if current_user.loginable_type == "PrimaryCaregiver" %>
+        <li> <%= link_to 'Edit Profile', edit_on_call_caregiver_path(current_user.loginable) %></li>
+        <li>Search in your area for caregivers:
+        <%= form_tag :search_on_call_caregivers, method: :get do %>
+          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
+        <%= submit_tag "Search" %>
+        <% end %></li>
 
-    Search for Caregivers in Your Area
-    <%= form_tag :search_on_call_caregivers, method: :get do %>
-      <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
-      <%= submit_tag "Search" %>
-    <%end%>
+        <% else %>
+        <li> <%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
+        <li>Search in your area for those in need of help:
+        <%= form_tag :search_primary_caregivers, method: :get do %>
+          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
+        <%= submit_tag "Search" %>
+        <% end %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+
   </nav>
   <div id="flash-container">
     <% flash.each do |name, msg| %>

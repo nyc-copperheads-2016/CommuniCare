@@ -7,7 +7,7 @@ class OnCallCaregiver < ActiveRecord::Base
   validates_presence_of :education
   validates_presence_of :about
 
-  def find_OCC(miles)
+  def find_PC(miles)
     Login.near([login.latitude, login.longitude], miles).where(loginable_type: "PrimaryCaregiver")
   end
 end

@@ -7,12 +7,12 @@ class LoginsController < ApplicationController
 
   def create
     if params[:login][:loginable_type] == "PrimaryCaregiver"
-      caregiver = PrimaryCaregiver.create
+      caregiver = PrimaryCaregiver.create(about_me: "")
       @login = Login.new(login_params)
       @login.loginable_id = caregiver.id
       @login.loginable_type = "PrimaryCaregiver"
     else
-      caregiver = OnCallCaregiver.create
+      caregiver = OnCallCaregiver.create(about: "")
       @login = Login.new(login_params)
       @login.loginable_id = caregiver.id
       @login.loginable_type = "OnCallCaregiver"
@@ -20,12 +20,10 @@ class LoginsController < ApplicationController
 
     if @login.save
       flash[:notice] = 'You Are Now Registered!'
-      session[:user_id] = @login.id
+      session[:login_id] = @login.id
       binding.pry
       redirect_to root_path
     else
-      @login.is_geocoded
-      binding.pry
       render :new
     end
   end
