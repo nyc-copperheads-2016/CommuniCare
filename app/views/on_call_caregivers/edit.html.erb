@@ -1,0 +1,37 @@
+<div align="center">
+<h1> Edit Profile:</h1>
+
+<div>
+  <% if @occ.errors.any? %>
+  <% @occ.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+</div>
+<h3> <%= form_for @occ do |f| %>
+  <div>
+    <%= f.label :Education %>
+    <%= f.text_field :education %>
+  </div>
+  <div>
+    <%= f.label :About %>
+    <%= f.text_field :about %>
+  </div>
+  <div>
+    <%= f.label :Credentials %>
+    <%= f.text_field :credentials %>
+  <div>
+    <%= f.label :Specialty %>
+    <%= f.text_field :specialities %>
+  </div>
+  <div>
+    <%= f.label :Experience %>
+    <%= f.text_area :experience %>
+  </div>
+  <div>
+    <%= f.label :Hobbies %>
+    <%= f.text_area :hobbies %>
+  </div>
+
+<%= f.submit "Save Profile"%>
+  <% end %>
