@@ -24,10 +24,11 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
-  resources :logins, only: [:create, :destroy]
+  resources :logins, only: [:create, :destroy, :new]
 
   get 'login' => 'sessions'
   get 'logout'=> 'sessions#destroy'
+
 
 
   # Example resource route with options:

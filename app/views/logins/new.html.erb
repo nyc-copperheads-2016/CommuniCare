@@ -1,26 +1,27 @@
 <div align="center">
-<h3> <%= form_for @login do |f| do %>
+<h1> Register:</h1>
+<h3> <%= form_for @login do |f| %>
   <div>
 
     <div>
-     <%= f.label_tag :First_Name %>
-     <%= f.text_field_tag :first_name %>
+     <%= f.label :First_Name %>
+     <%= f.text_field :first_name %>
     </div>
     <div>
-     <%= f.label_tag :Last_Name %>
-     <%= f.text_field_tag :last_name %>
+     <%= f.label :Last_Name %>
+     <%= f.text_field :last_name %>
     </div>
     <div>
-     <%= f.label_tag :Address %>
-     <%= f.text_field_tag :address%>
+     <%= f.label :Address %>
+     <%= f.text_field :address%>
     </div>
     <div>
-     <%= f.label_tag :City %>
-     <%= f.text_field_tag :city %>
+     <%= f.label :City %>
+     <%= f.text_field :city %>
     </div>
 
     <div>
-     <%= f.text_field :State %>
+      <%= f.label :State %>
      <%= f.select :state, [
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
@@ -77,29 +78,35 @@
     ] %>
     </div>
     <div>
-     <%= f.label_tag :Zip %>
-     <%= f.text_field_tag :zipcode %>
+     <%= f.label :Zip %>
+     <%= f.text_field :zipcode %>
     </div>
 
     <div>
-     <%= label_tag :Phone %>
-     <%= text_field_tag :phone %>
+     <%= f.label :Phone %>
+     <%= f.text_field :phone %>
     </div>
 
     <div>
-     <%= label_tag :Email %>
-     <%= text_field_tag :email %>
+     <%= f.label :Email %>
+     <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :Type %>
+      <%= f.select :loginable_type, [
+      ['Primary Caregiver', 'PrimaryCaregiver'],
+      ['CommuniHelper','OnCallCaregiver']
+    ] %>
     </div>
 
    <div>
-    <%=label_tag :password %>
-    <%= text_field_tag :password %>
+    <%=f.label :password %>
+    <%= f.password_field :password %>
    </div>
-    <%= label_tag : %>
-    <%= text_field_tag :loginable_type %>
-    <%= submit_tag 'Login' %>
+    <%= f.submit 'Login' %>
   <% end %>
   </div>
 </h3>
+
 
 
