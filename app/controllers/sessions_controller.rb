@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    login = Login.find(email: params[:email])
+    login = Login.find_by(email: params[:email])
     if login && login.authenticate(params[:password])
       flash[:notice] = 'Welcome to Communicare!'
       session[:login_id] = login.id
