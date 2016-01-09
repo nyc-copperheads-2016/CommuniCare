@@ -14,4 +14,12 @@ class Login < ActiveRecord::Base
   def city_state
     city + ", " + state
   end
+
+  def self.change_to_loginable(logins)
+    loginables = []
+    logins.each do |login|
+      loginables << login.loginable
+    end
+    loginables
+  end
 end
