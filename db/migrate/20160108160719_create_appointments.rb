@@ -2,8 +2,10 @@ class CreateAppointments < ActiveRecord::Migration
   def change
     create_table :appointments do |t|
       t.references :caregiver_relationship
-      t.string :date
-      t.string :duration
+      t.date :date
+      t.integer :duration
+      t.datetime :start_time
+      t.string :details
 
       t.timestamps null: false
     end

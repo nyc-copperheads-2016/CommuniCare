@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <title> Calender </title>
   <div id='calendar'>
-  </div>
+    <%= month_calendar events: @pc.appointments do |date, appointments| %>
+      <%= date %>
+      <div>
+      <%= link_to "Add Availability", primary_caregiver_appointments_path(@pc, :date => date), method: :post  %>
+      </div>
 
-<p><a href="/appointments/new">New Appointment</a><p>
+      <% appointments.each do |appointment| %>
+      <div>
+        <%= link_to "Update Availability", edit_primary_caregiver_appointment_path(@pc, appointment)  %>
+      </div>
+      <% end %>
+  <% end %>
+  </div>
+<!--
+<p><a href="/appointments/new">New Appointment</a><p> -->

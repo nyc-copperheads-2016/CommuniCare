@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 20160108214657) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "caregiver_relationship_id"
-    t.string   "date"
-    t.string   "duration"
+    t.date     "date"
+    t.integer  "duration"
+    t.datetime "start_time"
+    t.string   "details"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -32,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   end
 
   create_table "caregiver_relationships", force: :cascade do |t|
-    t.string   "introduction_message", null: false
     t.integer  "primary_caregiver_id"
     t.integer  "on_call_caregiver_id"
     t.datetime "created_at",           null: false
@@ -71,17 +72,18 @@ ActiveRecord::Schema.define(version: 20160108214657) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string   "gender",     null: false
-    t.string   "habits",     null: false
-    t.string   "routine",    null: false
-    t.string   "ailments",   null: false
-    t.string   "medication", null: false
-    t.string   "name",       null: false
-    t.string   "background", null: false
-    t.integer  "age",        null: false
-    t.string   "hobbies",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "gender",               null: false
+    t.string   "habits",               null: false
+    t.string   "routine",              null: false
+    t.string   "ailments",             null: false
+    t.string   "medication",           null: false
+    t.string   "name",                 null: false
+    t.string   "background",           null: false
+    t.integer  "age",                  null: false
+    t.string   "hobbies",              null: false
+    t.integer  "primary_caregiver_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "primary_caregivers", force: :cascade do |t|

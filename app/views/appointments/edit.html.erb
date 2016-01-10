@@ -1,14 +1,12 @@
-<h1> Placeholder</h1>
-
-<%= form_for [@pc, @appointment] do |f| %>
-  <%=f.label :date %>:
-  <%= f.date_select :date, :placeholder => 'dd/mm/yyyy' %>
-  <br>
-  <br>
+<%= form_for [@pc, @appointment]  do |f| %>
+  <div>
   <%=f.label :duration %>:
   <%= f.select :duration, [['30 minutes','30 Minutes'],['1 Hour','1 hour'],['2 Hours','2 hours'],['3 Hours','3 hours'],['4 Hours','4 hours'],['5 Hours','5 hours'],['6 Hours','6 hours'],['7 Hours','7 hours']] %>
-  <br>
-  <br>
-  <%= f.submit %>
+  </div>
+  <div>
+    <%= f.label :Details %>
+    <%= f.text_area :details %>
+  </div>
 
- <% end %>
+<%= f.submit "Save Availability"%>
+  <% end %>

@@ -1,0 +1,25 @@
+<div class="basic-profile-info">
+<%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
+</div>
+
+<div class="primary-profile-info">
+  <div class="about">
+    <h2 class="profile-subheader">About Me</h2>
+    <h3>Summary</h3>
+    <p><%= @caregiver.about_me %></p>
+  </div>
+
+  <div class="patient-info">
+  <h2 class="profile-subheader">Patient Overview</h2>
+    <h3>Patient Age</h3>
+    <p><%= @caregiver.patient.age %></p>
+    <h3>Patient Gender</h3>
+    <p><%= @caregiver.patient.gender %></p>
+    <h3>Patient Ailments</h3>
+    <p><%= @caregiver.patient.ailments %></p>
+    <h3>Patient Hobbies</h3>
+    <p><%= @caregiver.patient.hobbies %></p>
+    <h3>Patient Background</h3>
+    <p><%= @caregiver.patient.background %></p>
+  </div>
+</div>
