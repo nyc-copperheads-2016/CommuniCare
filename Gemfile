@@ -31,6 +31,9 @@ gem 'geocoder'
 gem "simple_calendar", "~> 2.0"
 gem "combined_time_select", "~> 1.0.1"
 
+#gem for SMS messaging between Primary Caregivers and On Call Caregivers.
+gem 'twilio-ruby'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
