@@ -1,12 +1,27 @@
-<%= form_for [@pc, @appointment]  do |f| %>
-  <div>
-  <%=f.label :duration %>:
-  <%= f.select :duration, [['30 minutes','30 Minutes'],['1 Hour','1 hour'],['2 Hours','2 hours'],['3 Hours','3 hours'],['4 Hours','4 hours'],['5 Hours','5 hours'],['6 Hours','6 hours'],['7 Hours','7 hours']] %>
-  </div>
-  <div>
-    <%= f.label :Details %>
-    <%= f.text_area :details %>
-  </div>
+<div class="edit-appointment">
+  <%= form_for [@pc, @appointment]  do |f| %>
+    <div>
+      <%= f.label :Details %>
+      <%= f.text_area :details %>
+    </div>
 
-<%= f.submit "Save Availability"%>
-  <% end %>
+    <div>
+      <%= f.label :Start_Time %>
+      <%= f.time_select :start_time, :combined => true, :minute_interval => 30, ampm: true %>
+    </div>
+    <div>
+    <%=f.label :duration %>:
+    <%= f.select :duration, [['30 minutes','30 Minutes'],['1 Hour','1 hour'],['2 Hours','2 hours'],['3 Hours','3 hours'],['4 Hours','4 hours'],['5 Hours','5 hours'],['6 Hours','6 hours'],['7 Hours','7 hours']] %>
+    </div>
+
+  <%= f.submit "Save Availability"%>
+    <% end %>
+  <div id="delete-area">
+    <button class="delete-appointment">Delete Availability/Appointment</button>
+    <div class="confirmation">
+    <p>Are You Sure?</p>
+    <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
+    <button class="no-delete">No</button>
+    </div>
+  </div>
+</div>
