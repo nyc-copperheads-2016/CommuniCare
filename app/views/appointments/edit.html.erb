@@ -25,3 +25,14 @@
     </div>
   </div>
 </div>
+
+<div="applcations">
+<h2>Applications for this Appointment</h2>
+<% @appointment.applications.each do |application| %>
+  <div class="application">
+    Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
+    <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
+    <p><%= application.body%></p>
+  </div>
+<% end %>
+</div>

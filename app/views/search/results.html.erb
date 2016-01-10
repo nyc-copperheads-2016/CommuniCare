@@ -3,7 +3,7 @@
   <%@caregiver.each do |caregiver| %>
   <div class="result"
     <div class="basic-info">
-      <span class="name"><%= caregiver.login.first_name %> <%= caregiver.login.last_name %> </span>
+      <span class="name"><%= caregiver.login.full_name </span>
       <span class="city-state"><%= caregiver.login.city %>, <%= caregiver.login.state %></span>
     </div>
     <div class="additional-info">

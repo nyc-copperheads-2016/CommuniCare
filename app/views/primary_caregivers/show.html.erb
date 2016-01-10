@@ -30,7 +30,7 @@
   <% appointments.each do |appointment| %>
       <div>
         Needs Caretaking!
-        <%= link_to 'Apply To Help'  %>
+        <%= link_to 'Apply To Help', new_appointment_application_path(appointment) %>
       </div>
       <% end %>
   <% end %>
