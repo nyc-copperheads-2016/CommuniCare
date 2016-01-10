@@ -12,7 +12,7 @@
       <% appointments.each do |appointment| %>
       <div>
         <% if appointment.details && appointment.details.length > 0 %>
-        <%= appointment.convert_to_time %>:
+        @ <%= appointment.convert_to_time %>:
           <%= link_to appointment.details[0..25], edit_primary_caregiver_appointment_path(@pc, appointment)  %>
         <% else %>
         <%= link_to "Add Availability Details", edit_primary_caregiver_appointment_path(@pc, appointment)  %>

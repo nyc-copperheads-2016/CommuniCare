@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'search/on_call_caregivers' => 'search#OCC'
   get 'search/primary_caregivers' => 'search#PC'
+
+  resources :appointments do
+      resources :applications, only: [:new, :create]
+  end
   resources :primary_caregivers do
     resources :appointments
   end

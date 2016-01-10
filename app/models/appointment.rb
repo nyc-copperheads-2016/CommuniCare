@@ -2,7 +2,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :caregiver_relationship
   has_many :reviews
   has_many :reminders
-  has_many :applications
+  has_many :applications, dependent: :destroy
 
   def convert_to_datetime(time)
     d = date
@@ -15,6 +15,6 @@ class Appointment < ActiveRecord::Base
   end
 
   def convert_to_time
-    start_time.strftime("At %I:%M%p")
+    start_time.strftime("%I:%M%p")
   end
 end
