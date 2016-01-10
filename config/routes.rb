@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions'
   get 'logout'=> 'sessions#destroy'
 
+  resources :twilio, only: [:new, :create, :destroy]
+  get 'twilio' => 'twilio#new'
+  post '/send_sms' =>'twilio#send_sms'
 
 
   # Example resource route with options:
