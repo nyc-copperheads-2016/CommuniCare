@@ -5,7 +5,7 @@ class PrimaryCaregiver < ActiveRecord::Base
   has_many :appointments, through: :caregiver_relationships
 
   def find_OCC(miles)
-    Login.near([login.latitude, login.longitude], miles).where(loginable_type: "PrimaryCaregiver")
+    Login.near([login.latitude, login.longitude], miles).where(loginable_type: "OnCallCaregiver")
   end
 
 end

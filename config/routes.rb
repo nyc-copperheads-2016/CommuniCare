@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   get 'search/on_call_caregivers' => 'search#OCC'
   get 'search/primary_caregivers' => 'search#PC'
-  resources :on_call_caregivers, only: [:show, :update, :edit]
-  resources :primary_caregivers, only: [:show, :update, :edit] do
-    resources :patients
+  resources :primary_caregivers do
+    resources :appointments
   end
+
+  resources :on_call_caregivers, only: [:show, :update, :edit]
+  resources :primary_caregivers, only: [:show, :update, :edit]
+
   # get 'on_call_caregivers/search' =>
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -13,7 +16,6 @@ Rails.application.routes.draw do
 
 
   root 'welcome#index'
-  resources :appointments
 
 
   # Example of regular route:

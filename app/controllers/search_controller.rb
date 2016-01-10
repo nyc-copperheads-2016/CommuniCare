@@ -12,5 +12,4 @@ class SearchController < ApplicationController
       flash[:notice] = "Your current city and state are invalid. Please update your profile to contain a valid city and state." if !current_user.geocoded?
       render :results
   end
-
 end

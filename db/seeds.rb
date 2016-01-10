@@ -14,3 +14,5 @@ while i < 10
   occ = Login.create!(email: Faker::Internet.email, password:"123456", password_confirmation: "123456", address: Faker::Address.street_address, city: cities[i], state: states[i], zipcode: Faker::Address.zip, phone: "914-555-5555", loginable_id: occ.id, loginable_type: "OnCallCaregiver", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   i+=1
 end
+cr = CaregiverRelationship.create!(primary_caregiver: pc1)
+appointment = Appointment.create!(caregiver_relationship: cr, date: Date.new(2016,1,10), start_time: DateTime.now, duration: 3)

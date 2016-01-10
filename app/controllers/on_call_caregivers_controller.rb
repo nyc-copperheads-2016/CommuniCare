@@ -13,13 +13,12 @@ class OnCallCaregiversController < ApplicationController
     end
   end
 
-  private
-    def occ_params
-      params.require(:on_call_caregiver).permit(:education, :credentials, :about, :specialities, :experience, :hobbies)
-    end
-
   def show
     @caregiver = OnCallCaregiver.find_by(id: params[:id])
   end
 
+  private
+    def occ_params
+      params.require(:on_call_caregiver).permit(:education, :credentials, :about, :specialities, :experience, :hobbies)
+    end
 end

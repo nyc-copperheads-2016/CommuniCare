@@ -1,21 +1,21 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $('#calendar').fullCalendar({
-      dayClick: function(date, jsEvent, view) {
+//     $('#calendar').fullCalendar({
+//       dayClick: function(date, jsEvent, view) {
 
-        alert('Clicked on: ' + date.format());
+//         alert('Clicked on: ' + date.format());
 
-        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+//         alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 
-        alert('Current view: ' + view.name);
+//         alert('Current view: ' + view.name);
 
-        // change the day's background color just for fun
-        $(this).css('background-color', 'red');
-    }
-    //   $(".fc-day-number").click(function(){
-    // window.location.href='appointments/new.html';
+//         // change the day's background color just for fun
+//         $(this).css('background-color', 'red');
+//     }
+//     //   $(".fc-day-number").click(function(){
+//     // window.location.href='appointments/new.html';
 
-    // })
+//     // })
 
-  })
-});
+//   })
+// });

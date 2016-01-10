@@ -28,6 +28,7 @@
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
         <%= submit_tag "Search" %>
         <% end %></li>
+        <li> <%= link_to 'Manage Availability and Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
 
         <% else %>
         <li> <%= link_to 'Edit Profile', edit_on_call_caregiver_path(current_user.loginable) %></li>
@@ -36,6 +37,7 @@
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
         <%= submit_tag "Search" %>
         <% end %></li>
+
         <% end %>
       </ul>
     <% end %>
