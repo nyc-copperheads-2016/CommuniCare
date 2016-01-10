@@ -36,18 +36,10 @@ class LoginsController < ApplicationController
       else
         redirect_to primary_caregiver_path(primary_caregiver.id)
       end
-      occ = OnCallCaregiver.find_by(id: params[:id])
-     occ.login.update_attributes(pcc_login_params)
-        if occ.save
-      return root_path
-    else
-      return on_call_caregiver_path(on_call_caregiver.id)
-    end
   end
 
   def edit
     @pcc = PrimaryCaregiver.find_by(id: params[:id])
-    @occ = OnCallCaregiver.find_by(id: params[:id])
   end
 
 private
@@ -57,10 +49,7 @@ private
   end
 
   def pcc_login_params
-      params.require(:login).permit(:first_name,:last_name,:address,:city,:state,:phone)
-  end
-  def occ_login_params
-      params.require(:login).permit(:first_name,:last_name,:address,:city,:state,:phone)
+      params.require(:login).permit(:email,:address,:city, :state, :password, :zipcode, :phone, :first_name, :last_name)
   end
 end
 
