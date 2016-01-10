@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108214657) do
+ActiveRecord::Schema.define(version: 20160110204827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer  "appointment_id",       null: false
+    t.integer  "on_call_caregiver_id"
+    t.string   "body"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "caregiver_relationship_id"
@@ -22,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160108214657) do
     t.integer  "duration"
     t.datetime "start_time"
     t.string   "details"
+    t.boolean  "pc_confirmed"
+    t.boolean  "occ_confirmed"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
