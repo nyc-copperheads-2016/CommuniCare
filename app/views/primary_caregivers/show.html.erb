@@ -23,3 +23,15 @@
     <p><%= @caregiver.patient.background %></p>
   </div>
 </div>
+
+<div class="appointments" id="calendar">
+  <%= month_calendar events: @caregiver.appointments do |date, appointments| %>
+  <%= date %>
+  <% appointments.each do |appointment| %>
+      <div>
+        Needs Caretaking!
+        <link_to
+      </div>
+      <% end %>
+  <% end %>
+</div>

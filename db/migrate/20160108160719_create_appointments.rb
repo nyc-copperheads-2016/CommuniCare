@@ -6,6 +6,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.integer :duration
       t.datetime :start_time
       t.string :details
+      t.boolean :confirmed
 
       t.timestamps null: false
     end

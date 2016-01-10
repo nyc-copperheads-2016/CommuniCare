@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
   def create
     pc = PrimaryCaregiver.find_by(id: params[:primary_caregiver_id])
     relationship = CaregiverRelationship.create(primary_caregiver: pc)
-    appointment = Appointment.new(caregiver_relationship: relationship, date: params[:date], start_time: DateTime.parse(params[:date]))
+    appointment = Appointment.new(caregiver_relationship: relationship, date: params[:date], start_time: DateTime.parse(params[:date]), confirmed: false)
     relationship.save
     appointment.save
     redirect_to primary_caregiver_appointments_path(pc)
