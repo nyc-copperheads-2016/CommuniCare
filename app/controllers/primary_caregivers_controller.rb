@@ -1,5 +1,6 @@
 class PrimaryCaregiversController < ApplicationController
   def edit
+    @pcc = PrimaryCaregiver.find_by(id: params[:id])
   end
 
 
