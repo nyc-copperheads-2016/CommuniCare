@@ -6,7 +6,6 @@ class PrimaryCaregiversController < ApplicationController
   def update
     pcc = PrimaryCaregiver.find_by(id: params[:id])
     pcc.update_attributes(pcc_params)
-    pcc.login.update_attributes(pcc_login_params)
     if pcc.save
       redirect_to root_path
     else
@@ -17,8 +16,5 @@ class PrimaryCaregiversController < ApplicationController
   private
     def pcc_params
       params.require(:primary_caregiver).permit(:about_me)
-    end
-    def pcc_login_params
-      params.require(:login).permit(:first_name,:last_name,:address,:city,:state,:phone)
     end
 end

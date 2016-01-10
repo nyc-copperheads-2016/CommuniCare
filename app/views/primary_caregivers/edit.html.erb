@@ -89,3 +89,11 @@
     </div>
   <%= f.submit "Save Profile" %>
   <% end %>
+
+<h3> <%= form_for @pcc do |f| %> </h3>
+  <div>
+     <%= f.label :About %>
+     <%= f.text_area :about_me %>
+  </div>
+  <%= f.submit "Update About" %>
+  <% end %>
