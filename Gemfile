@@ -37,13 +37,19 @@ gem 'twilio-ruby'
 #gem for sending email between PCC and OCC
 gem 'mail'
 
+
 #gem for adding rankings and points to users.
 gem 'merit'
+
 
 #gem for running code asynchronously
 gem 'delayed_job_active_record'
 #gem for running delayed jobs
 gem "daemons"
+
+#gem for allowing photo capability
+gem 'paperclip'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
