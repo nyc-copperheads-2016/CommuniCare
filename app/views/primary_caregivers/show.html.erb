@@ -1,0 +1,38 @@
+<div class="basic-profile-info">
+<%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
+</div>
+
+<div class="primary-profile-info">
+  <div class="about">
+    <h2 class="profile-subheader">About Me</h2>
+    <h3>Summary</h3>
+    <p><%= @caregiver.about_me %></p>
+  </div>
+
+  <div class="patient-info">
+  <h2 class="profile-subheader">Patient Overview</h2>
+    <h3>Patient Age</h3>
+    <div><p><%= @caregiver.patient.age %></p></div>
+    <h3>Patient Gender</h3>
+    <div><p><%= @caregiver.patient.gender %></p></div>
+    <h3>Patient Ailments</h3>
+    <div><p><%= @caregiver.patient.ailments %></p></div>
+    <h3>Patient Hobbies</h3>
+    <div><p><%= @caregiver.patient.hobbies %></p></div>
+    <h3>Patient Background</h3>
+    <div><p><%= @caregiver.patient.background %></p></div>
+  </div>
+</div>
+
+<div class="appointments" id="calendar">
+  <%= month_calendar events: @caregiver.appointments do |date, appointments| %>
+  <%= date %>
+  <% appointments.each do |appointment| %>
+      <div>
+        Needs Caretaking!
+        <%= link_to 'Apply To Help', new_appointment_application_path(appointment) %>
+      </div>
+      <% end %>
+  <% end %>
+</div>
+

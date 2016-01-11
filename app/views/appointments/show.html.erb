@@ -1,0 +1,8 @@
+<h1>Upcoming CommuniCare Appointments</h1>
+
+  <%= @appointment.date %>
+  <%= @appointment.duration %>
+  <%= @appointment.details %>
+  <div>
+    <%= link_to 'Click Here To Send An Email To Your Community Caregiver', new_mail_path %>
+  </div>
