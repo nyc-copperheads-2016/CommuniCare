@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'search/primary_caregivers' => 'search#PC'
 
   resources :appointments do
+    put '/applications/:id/select' => 'appointments#select', as: :select
       resources :applications, only: [:new, :create]
   end
   resources :primary_caregivers do

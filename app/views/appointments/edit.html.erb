@@ -18,7 +18,7 @@
     <% end %>
   <div id="delete-area">
     <button class="delete-appointment">Delete Availability/Appointment</button>
-    <div class="confirmation">
+    <div class="delete-confirmation">
     <p>Are You Sure?</p>
     <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
     <button class="no-delete">No</button>
@@ -33,6 +33,21 @@
     Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
     <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
     <p><%= application.body%></p>
-  </div>
+    <% if !@appointment.pc_confirmed %>
+      <div id="select-appt-area">
+      <button class="select-application">Select Application</button>
+      <div class="select-confirmation">
+        <p>Are You Sure?</p>
+        <%= button_to 'Yes', appointment_select_path(@appointment, application), method: "put", form_class: "yes-select" %>
+        <button class="no-select">No</button>
+        </div>
+      </div>
+    <% elsif application.on_call_caregiver == @appointment.caregiver_relationship.on_call_caregiver %>
+    <p class="selected">Selected!</p>
+    <% end %>
+
+      <div>
+
+      </div>
 <% end %>
 </div>

@@ -17,4 +17,8 @@ class Appointment < ActiveRecord::Base
   def convert_to_time
     start_time.strftime("%I:%M%p")
   end
+
+  def applicants
+    applications.map{|application| application.on_call_caregiver}
+  end
 end

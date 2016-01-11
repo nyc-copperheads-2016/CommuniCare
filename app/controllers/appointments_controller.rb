@@ -33,6 +33,23 @@ class AppointmentsController < ApplicationController
     redirect_to primary_caregiver_appointments_path(pc)
   end
 
+  def select
+    appointment = Appointment.find_by(id: params[:appointment_id])
+    application = Application.find_by(id: params[:id])
+    appointment.pc_confirmed = true
+    existing_relationship = CaregiverRelationship.where(primary_caregiver: appointment.caregiver_relationship.primary_caregiver, on_call_caregiver: application.on_call_caregiver)
+    if existing_relationship.empty?
+      appointment.caregiver_relationship.on_call_caregiver=application.on_call_caregiver
+    else
+      binding.pry
+      appointment.caregiver_relationship = existing_relationship.first
+    end
+    appointment.save
+    appointment.caregiver_relationship.save
+
+    redirect_to primary_caregiver_appointments_path(appointment.caregiver_relationship.primary_caregiver)
+  end
+
 private
 
   def appointment_params
