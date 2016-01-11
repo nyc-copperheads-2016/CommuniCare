@@ -34,6 +34,9 @@ gem "combined_time_select", "~> 1.0.1"
 #gem for SMS messaging between Primary Caregivers and On Call Caregivers.
 gem 'twilio-ruby'
 
+#gem for sending email between PCC and OCC
+gem 'mail'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

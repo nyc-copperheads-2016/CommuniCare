@@ -43,6 +43,10 @@ Rails.application.routes.draw do
   get 'twilio' => 'twilio#new'
   post '/send_sms' =>'twilio#send_sms'
 
+  resources :mail, only: [:new, :create, :destroy]
+  get 'mail' => 'mail#new'
+  post '/send_email' => 'mail#send_email'
+
 
   # Example resource route with options:
   #   resources :products do

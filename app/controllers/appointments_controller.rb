@@ -26,6 +26,11 @@ class AppointmentsController < ApplicationController
     redirect_to primary_caregiver_appointments_path(pc)
   end
 
+  def show
+    @pc = PrimaryCaregiver.find_by(id: params[:primary_caregiver_id])
+    @appointment = Appointment.find(params[:id])
+  end
+
   def destroy
     pc = PrimaryCaregiver.find_by(id: params[:primary_caregiver_id])
     appointment = Appointment.find_by(id: params[:id])
@@ -51,7 +56,6 @@ class AppointmentsController < ApplicationController
   end
 
 private
-
   def appointment_params
     params.require(:appointment).permit(:date,:duration, :details)
   end
