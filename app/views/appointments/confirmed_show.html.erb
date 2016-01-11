@@ -1,0 +1,38 @@
+<div class="appointment-details">
+  <h2>Appointment Overview</h2>
+  <p>Appointment with: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> <%= link_to 'See Profile', primary_caregiver_path(@confirmed_appointment.caregiver_relationship.primary_caregiver) %></p>
+  <p>Date: <%= @confirmed_appointment.convert_to_date %> at <%= @confirmed_appointment.convert_to_time %></p>
+  <p>Duration: <%= @confirmed_appointment.duration %></p>
+  <p>Details: <%= @confirmed_appointment.details %></p>
+  <p>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> </p>
+</div>
+<div>
+  <h2>Contact <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> via Email:</h2>
+<%= form_tag('/send_email', method: 'POST') do %>
+<textarea rows="4" cols="50" placeholder="Enter Message Here" name="body"></textarea>
+<button type="submit">Click To Send Email</button>
+<% end %>
+</div>
+<div class="patient-info">
+  <h2 class="profile-subheader">Patient Overview</h2>
+  <h3>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %></h3>
+  <button class="patient">Show More Info</button>
+  <div class="additional-patient-info">
+    <h3>Patient Age</h3>
+    <div><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.age %></div>
+    <h3>Patient Gender</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.gender %></p></p></div>
+    <h3>Patient Ailments</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.ailments %></p></div>
+    <h3>Patient Hobbies</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.hobbies %></p></div>
+    <h3>Patient Background</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.background %></p></div>
+    <h3>Patient Medication</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.medication %></p></div>
+    <h3>Patient Routine</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.routine %></p></div>
+    <h3>Patient Habits</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.habits %></p></div>
+  </div>
+</div>

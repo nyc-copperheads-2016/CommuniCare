@@ -1,10 +1,9 @@
 <h1>Your Confirmed Appointments:</h1>
 
-<%= @confirmed_appointments.each do |appointment| %>
-  <div>
-    <%= appointment.date %>
-  <%= appointment.duration %>
-  <%= appointment.details %>
+<% @confirmed_appointments.each do |appointment| %>
+  <div class="appointment-details">
+  <p>Appointment with: <%= appointment.caregiver_relationship.primary_caregiver.login.full_name %> <%= link_to 'See Profile', primary_caregiver_path(appointment.caregiver_relationship.primary_caregiver) %></p>
+  <p>Date: <%= appointment.convert_to_date %> at <%= appointment.convert_to_time %></p>
+  <p><%= link_to 'See Full Appointment Info', on_call_caregiver_confirmed_appointment_path(appointment.caregiver_relationship.on_call_caregiver, appointment)%></p>
   </div>
-
 <% end %>

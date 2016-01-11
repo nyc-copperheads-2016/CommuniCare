@@ -18,14 +18,21 @@ class Appointment < ActiveRecord::Base
     start_time.strftime("%I:%M%p")
   end
 
+  def convert_to_date
+    start_time.strftime("%B %e, %Y")
+  end
+
   def applicants
     applications.map{|application| application.on_call_caregiver}
   end
 
-  def self.find_from_relationships(relationships)
+  def self.find_confirmed_from_relationships(relationships)
     appointments = []
     relationships.each do |relationship|
-      appointments << Appointment.find_by(caregiver_relationship: relationship)
+      appointments_with_relationship = Appointment.where(caregiver_relationship: relationship)
+      appointments_with_relationship.each do |appointment|
+        appointments << appointment if appointment.occ_confirmed && appointment.pc_confirmed
+      end
     end
     appointments
   end

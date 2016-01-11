@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :on_call_caregivers, only: [:show, :update, :edit] do
     get '/appointments' => 'appointments#confirmed_index', as: :confirmed_appointments
+    get '/appointments/:id' => 'appointments#confirmed_show', as: :confirmed_appointment
   end
   resources :primary_caregivers, only: [:show, :update, :edit]
 

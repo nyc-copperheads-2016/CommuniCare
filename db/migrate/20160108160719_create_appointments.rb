@@ -3,7 +3,7 @@ class CreateAppointments < ActiveRecord::Migration
     create_table :appointments do |t|
       t.references :caregiver_relationship
       t.date :date
-      t.integer :duration
+      t.string :duration
       t.datetime :start_time
       t.string :details
       t.boolean :pc_confirmed
