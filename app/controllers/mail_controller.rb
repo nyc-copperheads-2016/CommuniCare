@@ -6,7 +6,7 @@ class MailController < ApplicationController
 
   def send_email
   smtp = { :address => 'smtp.gmail.com', :port => 587, :domain => 'gmail.com',
-    :user_name => 'primarycaregiver123', :password => 'communicare123',
+    :user_name => ENV["SMTP_USER"], :password => ENV["SMTP_PASSWORD"],
     :enable_starttls_auto => true,    :authentication =>:plain}
     Mail.defaults { delivery_method :smtp, smtp}
     mail = Mail.new do
