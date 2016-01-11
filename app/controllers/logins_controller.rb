@@ -7,6 +7,8 @@ class LoginsController < ApplicationController
   def create
     if params[:login][:loginable_type] == "PrimaryCaregiver"
       caregiver = PrimaryCaregiver.create(about_me: "")
+      patient = Patient.create
+      caregiver.patient = patient
       @login = Login.new(login_params)
       @login.loginable_id = caregiver.id
       @login.loginable_type = "PrimaryCaregiver"
@@ -17,11 +19,12 @@ class LoginsController < ApplicationController
       @login.loginable_type = "OnCallCaregiver"
     end
 
-    if @login.save
+    if @login.save && caregiver.save
       flash[:notice] = 'You Are Now Registered!'
       session[:login_id] = @login.id
       redirect_to root_path
     else
+      patient.destroy if patient
       caregiver.destroy
       render :new
     end
