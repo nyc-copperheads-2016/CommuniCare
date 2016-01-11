@@ -21,4 +21,13 @@ class Appointment < ActiveRecord::Base
   def applicants
     applications.map{|application| application.on_call_caregiver}
   end
+
+  def self.find_from_relationships(relationships)
+    appointments = []
+    relationships.each do |relationship|
+      appointments << Appointment.find_by(caregiver_relationship: relationship)
+    end
+    appointments
+  end
+
 end

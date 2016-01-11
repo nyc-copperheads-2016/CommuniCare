@@ -1,0 +1,10 @@
+<h1>Your Confirmed Appointments:</h1>
+
+<%= @confirmed_appointments.each do |appointment| %>
+  <div>
+    <%= appointment.date %>
+  <%= appointment.duration %>
+  <%= appointment.details %>
+  </div>
+
+<% end %>
