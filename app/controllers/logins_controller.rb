@@ -20,7 +20,6 @@ class LoginsController < ApplicationController
     if @login.save
       flash[:notice] = 'You Are Now Registered!'
       session[:login_id] = @login.id
-      binding.pry
       redirect_to root_path
     else
       render :new

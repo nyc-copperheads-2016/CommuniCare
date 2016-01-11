@@ -16,3 +16,6 @@ while i < 10
 end
 cr = CaregiverRelationship.create!(primary_caregiver: pc1)
 appointment = Appointment.create!(caregiver_relationship: cr, date: Date.new(2016,1,10), start_time: DateTime.now, duration: 3, pc_confirmed: false, occ_confirmed: false)
+
+oc = CaregiverRelationship.create!(on_call_caregiver: occ1)
+appointment = Appointment.create!(caregiver_relationship: oc, date: Date.new(2016,1,10), start_time: DateTime.now, duration: 3, pc_confirmed: false, occ_confirmed: false)
