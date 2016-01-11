@@ -1,4 +1,6 @@
 class OnCallCaregiver < ActiveRecord::Base
+  has_merit
+
   has_many :caregiver_relationships
   has_many :appointments, through: :caregiver_relationships
   has_one :login, :as => :loginable

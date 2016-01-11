@@ -23,3 +23,10 @@
     <p><%= @caregiver.specialities %></p>
   </div>
 </div>
+
+<div id= "badge-count"><p>You have <%= current_user.loginable.badges.count %> badges. Help more people to receive badges and become CERTIFIED."</p></div>
+<ul>
+  <% current_user.loginable.badges.each do |badge| %>
+    <li><%= badge.name %></li>
+  <% end %>
+</ul>

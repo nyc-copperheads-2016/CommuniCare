@@ -17,6 +17,7 @@ class LoginsController < ApplicationController
       @login = Login.new(login_params)
       @login.loginable_id = caregiver.id
       @login.loginable_type = "OnCallCaregiver"
+      caregiver.add_badge(1)
     end
 
     if @login.save && caregiver.save

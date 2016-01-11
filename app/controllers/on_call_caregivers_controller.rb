@@ -4,9 +4,9 @@ class OnCallCaregiversController < ApplicationController
   end
 
   def update
-    occ = OnCallCaregiver.find_by(id: params[:id])
-    occ.update_attributes(occ_params)
-    if occ.save
+    @occ = OnCallCaregiver.find_by(id: params[:id])
+    @occ.update_attributes(occ_params)
+    if @occ.save
       redirect_to root_path
     else
       redirect_to on_call_caregiver_path(on_call_caregiver.id)
