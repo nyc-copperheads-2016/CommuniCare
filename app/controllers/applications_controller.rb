@@ -10,7 +10,6 @@ class ApplicationsController < ApplicationController
       @application = Application.new(application_params)
       @application.on_call_caregiver = current_user.loginable
       @application.appointment = @appointment
-      @application.appointment.occ_confirmed = true
       if @application.save && @application.appointment
         redirect_to primary_caregiver_path(@appointment.caregiver_relationship.primary_caregiver)
       else

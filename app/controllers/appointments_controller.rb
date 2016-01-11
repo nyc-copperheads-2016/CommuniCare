@@ -42,6 +42,7 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find_by(id: params[:appointment_id])
     application = Application.find_by(id: params[:id])
     appointment.pc_confirmed = true
+    appointment.occ_confirmed = true
     existing_relationship = CaregiverRelationship.where(primary_caregiver: appointment.caregiver_relationship.primary_caregiver, on_call_caregiver: application.on_call_caregiver)
     if existing_relationship.empty?
       appointment.caregiver_relationship.on_call_caregiver=application.on_call_caregiver
@@ -50,7 +51,7 @@ class AppointmentsController < ApplicationController
     end
     appointment.save
     appointment.caregiver_relationship.save
-
+    # AppointmentMailer.confirm_occ(appointment.caregiver_relationship.on_call_caregiver, appointment.caregiver_relationship.primary_caregiver, appointment)
     redirect_to primary_caregiver_appointments_path(appointment.caregiver_relationship.primary_caregiver)
   end
 
