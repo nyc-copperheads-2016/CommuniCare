@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   end
   resources :primary_caregivers do
     resources :appointments
+    resources :patients, only: [:update]
   end
 
-  resources :on_call_caregivers, only: [:show, :update, :edit]
+  resources :on_call_caregivers, only: [:show, :update, :edit] do
+    get '/appointments' => 'appointments#confirmed_index', as: :confirmed_appointments
+  end
   resources :primary_caregivers, only: [:show, :update, :edit]
 
-  # get 'on_call_caregivers/search' =>
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

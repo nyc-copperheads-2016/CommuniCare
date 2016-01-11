@@ -37,7 +37,7 @@
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
         <%= submit_tag "Search" %>
         <% end %></li>
-
+        <li><%= link_to 'Manage Your Scheduled Appointments', on_call_caregiver_confirmed_appointments_path(current_user.loginable) %></li>
         <% end %>
       </ul>
     <% end %>
