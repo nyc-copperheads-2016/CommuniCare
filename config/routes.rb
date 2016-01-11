@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resources :mail, only: [:new, :create, :destroy]
   get 'mail' => 'mail#new'
   post '/send_email' => 'mail#send_email'
-
+  post '/send_confirmation' => 'mail#send_confirmation'
 
   # Example resource route with options:
   #   resources :products do
