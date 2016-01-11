@@ -1,4 +1,6 @@
 class PrimaryCaregiver < ActiveRecord::Base
+  has_merit
+
   has_one :login, :as => :loginable
   has_many :caregiver_relationships
   has_one :patient

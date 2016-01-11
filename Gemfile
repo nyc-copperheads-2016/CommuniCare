@@ -37,6 +37,9 @@ gem 'twilio-ruby'
 #gem for sending email between PCC and OCC
 gem 'mail'
 
+#gem for adding rankings and points to users.
+gem 'merit'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
