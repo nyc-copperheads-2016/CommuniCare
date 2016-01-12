@@ -1,0 +1,22 @@
+
+  <div id='calendar'>
+    <%= month_calendar events: @pc.appointments do |date, appointments| %>
+      <%= date %>
+      <div>
+        <% if !Appointment.appt_dates(appointments).include?(date) %>
+        <%= link_to "Add Availability", primary_caregiver_appointments_path(@pc, :date => date), method: :post  %>
+        <% end %>
+      </div>
+
+      <% appointments.each do |appointment| %>
+      <div>
+        <% if appointment.details && appointment.details.length > 0 %>
+        <%= appointment.convert_to_time %>:
+          <%= link_to appointment.details[0..25], edit_primary_caregiver_appointment_path(@pc, appointment)  %>
+        <% else %>
+        <%= link_to "Add Availability Details", edit_primary_caregiver_appointment_path(@pc, appointment)  %>
+        <% end %>
+      </div>
+      <% end %>
+  <% end %>
+  </div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello from Communicare, <%= @occ.login.full_name %></h1>
+    <p>
+      Your application has been selected by <%= @pc.login.full_name%>.
+    </p>
+    <p>
+      To see the details log in to <%= url_for "CommuniCare" %> and go to your confirmed appointments.
+    </p>
+    <p>Thanks for using Communicare!</p>
+  </body>
+</html>

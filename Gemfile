@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -27,6 +27,23 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'geocoder'
+gem "simple_calendar", "~> 2.0"
+gem "combined_time_select", "~> 1.0.1"
+
+#gem for SMS messaging between Primary Caregivers and On Call Caregivers.
+gem 'twilio-ruby'
+
+#gem for sending email between PCC and OCC
+gem 'mail'
+
+#gem for adding rankings and points to users.
+gem 'merit'
+
+#gem for running code asynchronously
+gem 'delayed_job_active_record'
+#gem for running delayed jobs
+gem "daemons"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -34,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :development do

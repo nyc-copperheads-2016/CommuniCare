@@ -1,0 +1,15 @@
+<div class="appointment-details">
+  <h1>Appointment Details</h1>
+  <p>When? <%= @appointment.date %> @ <%= @appointment.convert_to_time %></p>
+  <p>How Long? <%= @appointment.duration %></p>
+  <p>Details: <%= @appointment.details %></p>
+</div>
+
+<div class="application-details">
+  <%= form_for [@appointment,@application] do |f| %>
+  <%= f.text_area :body %>
+  <div>
+  <%= f.submit 'Send Caregiver A Message'%>
+  </div>
+  <% end %>
+</div>
