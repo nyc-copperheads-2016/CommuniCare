@@ -15,3 +15,4 @@
 //= require_tree .
 //= require appointment.js
 //= require patient.js
+//= require bootstrap.min
