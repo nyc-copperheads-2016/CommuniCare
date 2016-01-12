@@ -13,6 +13,8 @@
 
 
 
+
+
 ActiveRecord::Schema.define(version: 20160111193610) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160111193610) do
   create_table "appointments", force: :cascade do |t|
     t.integer  "caregiver_relationship_id"
     t.date     "date"
-    t.integer  "duration"
+    t.string   "duration"
     t.datetime "start_time"
     t.string   "details"
     t.boolean  "pc_confirmed"
@@ -138,17 +140,14 @@ ActiveRecord::Schema.define(version: 20160111193610) do
     t.string   "specialities"
     t.string   "experience"
     t.string   "hobbies"
-
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",           <    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "sash_id"
-    t.integer  "level",        default: 0
-
+    t.integer  "level",              default: 0
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-
   end
 
   create_table "patients", force: :cascade do |t|
@@ -168,15 +167,14 @@ ActiveRecord::Schema.define(version: 20160111193610) do
 
   create_table "primary_caregivers", force: :cascade do |t|
     t.string   "about_me"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "sash_id"
-    t.integer  "level",      default: 0
+    t.integer  "level",              default: 0
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-
   end
 
   create_table "reminders", force: :cascade do |t|

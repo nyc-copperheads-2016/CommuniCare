@@ -110,9 +110,15 @@
     <div>
        <%= f.label :About_Me %>
        <%= f.text_area :about_me %>
-    </div>
-    <%= f.submit "Save About Me" %>
-    <% end %>
+       <%= f.label :image %>
+       <%= f.file_field :image %>
+     </div>
+      <br>
+
+     <div>
+       <%= f.submit "Save About Me & Image"%>
+      <% end %>
+     </div>
 </div>
   <div>
     <h2>Update Patient Information</h2>

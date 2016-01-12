@@ -27,6 +27,6 @@ class OnCallCaregiversController < ApplicationController
 
   private
     def occ_params
-      params.require(:on_call_caregiver).permit(:education, :credentials, :about, :specialities, :experience, :hobbies)
+      params.require(:on_call_caregiver).permit(:education, :credentials, :about, :specialities, :experience, :hobbies, :image)
     end
 end

@@ -19,8 +19,13 @@
     <%= f.text_field :about %>
   </div>
   <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div>
     <%= f.label :Credentials %>
     <%= f.text_field :credentials %>
+  </div>
   <div>
     <%= f.label :Specialty %>
     <%= f.text_field :specialities %>
@@ -33,6 +38,8 @@
     <%= f.label :Hobbies %>
     <%= f.text_area :hobbies %>
   </div>
+
+
 
 <%= f.submit "Update Profile"%>
   <% end %>

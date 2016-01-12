@@ -21,7 +21,7 @@
   <nav>
     <% if logged_in? %>
       <ul>
-        <li>Welcome, <%= current_user.email %></li>
+   Welcome, <%= current_user.email %>
         <li><%= link_to 'Sign Out', logout_path %></li>
         <% if current_user.loginable_type == "PrimaryCaregiver" %>
         <li> <%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
@@ -33,9 +33,7 @@
         <li> <%= link_to 'Manage Availability and Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
 
         <% else %>
-
         <li> <%= link_to 'Edit Profile', edit_on_call_caregiver_path(current_user.loginable) %></li>
-        <% binding.pry %>
         <li>Search in your area for those in need of help:
         <%= form_tag :search_primary_caregivers, method: :get do %>
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>

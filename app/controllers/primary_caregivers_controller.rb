@@ -20,10 +20,6 @@ class PrimaryCaregiversController < ApplicationController
 
   private
     def pcc_params
-      params.require(:primary_caregiver).permit(:about_me)
+      params.require(:primary_caregiver).permit(:about_me, :image)
     end
-
-
-
-
 end
