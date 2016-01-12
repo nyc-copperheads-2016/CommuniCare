@@ -1,0 +1,6 @@
+<h2>Send A Direct Message To Your CommuniCare Giver Via Text:</h2>
+<%= form_tag('/send_sms', method: 'POST') do %>
+<textarea rows="4" cols="50" placeholder="Enter Message Here" name="message"></textarea>
+<input name="number" type="hidden" value= "<%= @twiliNum %>"/>
+<button type="submit">Click To Send Message</button>
+<% end %>
