@@ -25,10 +25,35 @@
     </div>
   </div>
 </div>
+  <% if @appointment.pc_confirmed && @appointment.occ_confirmed %>
+  <div class="Reminders">
+      <ul>
+        <% @appointment.reminders.each do |reminder|%>
+          <li>Time: <%= reminder.convert_to_time %>, Reminder: <%= reminder.body %>
+            <%= button_to 'Delete Reminder', appointment_reminder_path(@appointment, reminder), method: "delete" %>
+          </li>
+        <% end %>
+      </ul>
+    <h2>Add Reminder To Your Appointment</h2>
+    <%= form_for [@appointment, @reminder]  do |f| %>
+      <div>
+        <%= f.label "Time of Reminder" %>
+        <%= f.time_select :time, :combined => true, :minute_interval => 30, ampm: true %>
+      </div>
+      <div>
+        <%= f.label "Reminder:" %>
+        <%= f.text_area :body %>
+      </div>
+      <div>
+        <%= f.submit 'Add Reminder' %>
+      </div>
+    <%end%>
+  <% end %>
+</div>
 
-<div="applcations">
-<h2>Applications for this Appointment</h2>
-<% @appointment.applications.each do |application| %>
+<div class="applications">
+  <h2>Applications for this Appointment</h2>
+  <% @appointment.applications.each do |application| %>
   <div class="application">
     Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
     <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
@@ -41,13 +66,11 @@
         <%= button_to 'Yes', appointment_select_path(@appointment, application), method: "put", form_class: "yes-select" %>
         <button class="no-select">No</button>
         </div>
-      </div>
     <% elsif application.on_call_caregiver == @appointment.caregiver_relationship.on_call_caregiver %>
     <p class="selected">Selected!</p>
-    <% end %>
-
-      <div>
-
       </div>
-<% end %>
+    <% end %>
+    </div>
+      </div>
+  <% end %>
 </div>
