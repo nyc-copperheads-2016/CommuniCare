@@ -1,6 +1,8 @@
 <div class="appointment-details">
   <h2>Appointment Overview</h2>
-  <p>Appointment with: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> <%= link_to 'See Profile', primary_caregiver_path(@confirmed_appointment.caregiver_relationship.primary_caregiver) %></p>
+  <p>Appointment with:
+
+   <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> <%= link_to 'See Profile', primary_caregiver_path(@confirmed_appointment.caregiver_relationship.primary_caregiver) %></p>
   <p>Date: <%= @confirmed_appointment.convert_to_date %> at <%= @confirmed_appointment.convert_to_time %></p>
   <p>Duration: <%= @confirmed_appointment.duration %></p>
   <p>Details: <%= @confirmed_appointment.details %></p>

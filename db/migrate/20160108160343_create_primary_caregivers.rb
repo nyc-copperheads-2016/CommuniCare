@@ -3,6 +3,7 @@ class CreatePrimaryCaregivers < ActiveRecord::Migration
     create_table :primary_caregivers do |t|
       t.string :about_me
 
+
       t.timestamps null: false
     end
   end

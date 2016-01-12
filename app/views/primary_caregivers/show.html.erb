@@ -8,7 +8,9 @@
     <h3>Summary</h3>
     <p><%= @caregiver.about_me %></p>
   </div>
-
+  <div>
+    <p><%= image_tag @caregiver.image.url%></p>
+  </div>
   <div class="patient-info">
   <h2 class="profile-subheader">Patient Overview</h2>
     <h3>Patient Age</h3>
@@ -35,4 +37,5 @@
       <% end %>
   <% end %>
 </div>
+
 

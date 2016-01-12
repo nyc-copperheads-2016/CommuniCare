@@ -8,6 +8,7 @@ class CreateOnCallCaregivers < ActiveRecord::Migration
       t.string :experience
       t.string :hobbies
 
+
       t.timestamps null: false
     end
   end

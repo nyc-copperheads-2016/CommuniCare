@@ -44,6 +44,7 @@ class LoginsController < ApplicationController
 
   def edit
     @pcc = PrimaryCaregiver.find_by(id: params[:id])
+
   end
 
 private
@@ -53,7 +54,7 @@ private
   end
 
   def pcc_login_params
-      params.require(:login).permit(:email,:address,:city, :state, :password, :zipcode, :phone, :first_name, :last_name)
+      params.require(:login).permit(:email,:address,:city, :state, :password, :zipcode, :phone, :first_name, :last_name, :image)
   end
 end
 
