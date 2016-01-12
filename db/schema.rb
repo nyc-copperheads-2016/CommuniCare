@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111164955) do
+ActiveRecord::Schema.define(version: 20160112030915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160111164955) do
   create_table "appointments", force: :cascade do |t|
     t.integer  "caregiver_relationship_id"
     t.date     "date"
-    t.integer  "duration"
+    t.string   "duration"
     t.datetime "start_time"
     t.string   "details"
     t.boolean  "pc_confirmed"
@@ -60,6 +60,22 @@ ActiveRecord::Schema.define(version: 20160111164955) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "logins", force: :cascade do |t|
     t.string   "email",           null: false
@@ -151,7 +167,7 @@ ActiveRecord::Schema.define(version: 20160111164955) do
   end
 
   create_table "reminders", force: :cascade do |t|
-    t.string   "time",           null: false
+    t.datetime "time",           null: false
     t.string   "body",           null: false
     t.integer  "appointment_id"
     t.datetime "created_at",     null: false

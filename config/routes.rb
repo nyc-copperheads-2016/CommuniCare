@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   resources :appointments do
     put '/applications/:id/select' => 'appointments#select', as: :select
-      resources :applications, only: [:new, :create]
+    resources :applications, only: [:new, :create]
+    resources :reminders, only: [:create, :destroy]
   end
   resources :primary_caregivers do
     resources :appointments
@@ -14,8 +15,10 @@ Rails.application.routes.draw do
   resources :on_call_caregivers, only: [:show, :update, :edit] do
     get '/appointments' => 'appointments#confirmed_index', as: :confirmed_appointments
     get '/appointments/:id' => 'appointments#confirmed_show', as: :confirmed_appointment
+    post '/send_email_to' => 'on_call_caregivers#send_email_to', as: :send_email_to
   end
   resources :primary_caregivers, only: [:show, :update, :edit]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

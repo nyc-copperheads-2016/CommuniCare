@@ -30,3 +30,12 @@
     <li><%= badge.name %></li>
   <% end %>
 </ul>
+
+</div>
+<div id="contact-occ">
+  <h2>Contact This CommuniHelper</h2>
+  <%= form_tag on_call_caregiver_send_email_to_path(@caregiver) do %>
+    <%= text_area_tag :message%>
+    <%= submit_tag 'Send Message' %>
+  <% end %>
+</div>

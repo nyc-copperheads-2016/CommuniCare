@@ -13,6 +13,7 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @reminder = Reminder.new
     @pc = PrimaryCaregiver.find_by(id: params[:primary_caregiver_id])
     @appointment = Appointment.find_by(id: params[:id])
   end
@@ -41,17 +42,19 @@ class AppointmentsController < ApplicationController
   def select
     appointment = Appointment.find_by(id: params[:appointment_id])
     application = Application.find_by(id: params[:id])
+    occ = application.on_call_caregiver
+    pc = appointment.caregiver_relationship.primary_caregiver
     appointment.pc_confirmed = true
     appointment.occ_confirmed = true
-    existing_relationship = CaregiverRelationship.where(primary_caregiver: appointment.caregiver_relationship.primary_caregiver, on_call_caregiver: application.on_call_caregiver)
+    existing_relationship = CaregiverRelationship.where(primary_caregiver: pc, on_call_caregiver: occ)
     if existing_relationship.empty?
-      appointment.caregiver_relationship.on_call_caregiver=application.on_call_caregiver
+      appointment.caregiver_relationship.on_call_caregiver = occ
     else
       appointment.caregiver_relationship = existing_relationship.first
     end
-    appointment.save
-    appointment.caregiver_relationship.save
-    # AppointmentMailer.confirm_occ(appointment.caregiver_relationship.on_call_caregiver, appointment.caregiver_relationship.primary_caregiver, appointment)
+    if appointment.save && appointment.caregiver_relationship.save
+      AppointmentMailer.confirm_occ(occ, pc, appointment).deliver
+    end
     redirect_to primary_caregiver_appointments_path(appointment.caregiver_relationship.primary_caregiver)
   end
 

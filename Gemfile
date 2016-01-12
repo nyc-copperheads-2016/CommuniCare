@@ -40,6 +40,9 @@ gem 'mail'
 #gem for adding rankings and points to users.
 gem 'merit'
 
+#gem for running code asynchronously
+gem 'delayed_job_active_record'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

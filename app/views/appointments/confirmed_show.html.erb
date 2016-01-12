@@ -6,13 +6,6 @@
   <p>Details: <%= @confirmed_appointment.details %></p>
   <p>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> </p>
 </div>
-<div>
-  <h2>Contact <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> via Email:</h2>
-<%= form_tag('/send_email', method: 'POST') do %>
-<textarea rows="4" cols="50" placeholder="Enter Message Here" name="body"></textarea>
-<button type="submit">Click To Send Email</button>
-<% end %>
-</div>
 <div class="patient-info">
   <h2 class="profile-subheader">Patient Overview</h2>
   <h3>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %></h3>
@@ -35,4 +28,19 @@
     <h3>Patient Habits</h3>
     <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.habits %></p></div>
   </div>
+</div>
+<div class="contact-pc">
+  <h2>Send A Direct Message To Your CommuniCare Giver Via Text:</h2>
+<%= form_tag('/send_sms', method: 'POST') do %>
+
+<select>
+  <option value="Please Call ASAP">Please Call ASAP</option>
+  <option value="All is Well. Hope your enjoying yourself.">All is Well. Hope your enjoying yourself.</option>
+  <option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well.</option>
+  <option value="<option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy.</option>
+</select>
+<input name="number" type="hidden" value= "<%= @twiliNum %>"/>
+<button type="submit">Click To Send Message</button>
+<% end %>
+
 </div>

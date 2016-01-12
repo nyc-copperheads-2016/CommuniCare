@@ -11,6 +11,7 @@ class ApplicationsController < ApplicationController
       @application.on_call_caregiver = current_user.loginable
       @application.appointment = @appointment
       if @application.save && @application.appointment
+        PrimaryCaregiverMailer.send_email_to(current_user.loginable, @appointment.caregiver_relationship.primary_caregiver, @application, params[:application][:body]).deliver
         redirect_to primary_caregiver_path(@appointment.caregiver_relationship.primary_caregiver)
       else
         render :new
