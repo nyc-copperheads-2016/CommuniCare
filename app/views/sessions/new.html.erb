@@ -1,16 +1,16 @@
-<div align="center">
+<div class="user-form-container">
   <h1> Login</h1>
-<h3> <%= form_tag sessions_path, class:'login_form' do %>
-  <div>
+<%= form_tag sessions_path, class:'login_form' do %>
+  <div class="form-group">
     <%= label_tag :email %>
-    <%= text_field_tag :email %>
+    <%= text_field_tag :email, "", class: 'form-control' %>
   </div>
-  <div>
+  <div class="form-group">
     <%=label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, "", class: 'form-control' %>
   </div>
-    <%= submit_tag 'Login' %>
+    <%= submit_tag 'Login', class: 'form-control' %>
    <% end %>
   </div>
-</h3>
+
 
