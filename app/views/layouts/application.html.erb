@@ -13,6 +13,8 @@
   <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css' rel= "stylesheet" />
   <link href= "//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.print.css"
   rel= "stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
@@ -42,7 +44,6 @@
       </ul>
     <% end %>
 
-
   </nav>
   <div id="flash-container">
     <% flash.each do |name, msg| %>
@@ -55,4 +56,8 @@
 <%= yield %>
 
 </body>
+
+<div id="footer">
+  <p id="footer-text"> &copy; CommuniCare app made by Courtney Wiggins, David Roberts, and Eric Shou</p>
+</div>
 </html>

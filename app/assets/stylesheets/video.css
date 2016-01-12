@@ -16,6 +16,7 @@
     transform: translateX(-50%) translateY(-50%);
     background: url(polina.jpg) no-repeat;
     background-size: cover;
+    opacity: 0.4;
 }
 .container h1 {
     color: white;

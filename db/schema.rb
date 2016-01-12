@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160112030915) do
   create_table "appointments", force: :cascade do |t|
     t.integer  "caregiver_relationship_id"
     t.date     "date"
-    t.string   "duration"
+    t.integer  "duration"
     t.datetime "start_time"
     t.string   "details"
     t.boolean  "pc_confirmed"
@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 20160112030915) do
   end
 
   create_table "reminders", force: :cascade do |t|
-    t.datetime "time",           null: false
+    t.string   "time",           null: false
     t.string   "body",           null: false
     t.integer  "appointment_id"
     t.datetime "created_at",     null: false
