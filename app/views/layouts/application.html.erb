@@ -5,10 +5,59 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js">
+  </script>
+  <script src = "//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js">
+  </script>
+  <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css' rel= "stylesheet" />
+  <link href= "//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.print.css"
+  rel= "stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
+  <nav>
+    <% if logged_in? %>
+      <ul>
+        <li>Welcome, <%= current_user.email %></li>
+        <li><%= link_to 'Sign Out', logout_path %></li>
+        <% if current_user.loginable_type == "PrimaryCaregiver" %>
+        <li> <%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
+        <li>Search in your area for caregivers:
+        <%= form_tag :search_on_call_caregivers, method: :get do %>
+          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
+        <%= submit_tag "Search" %>
+        <% end %></li>
+        <li> <%= link_to 'Manage Availability and Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
+
+        <% else %>
+        <li> <%= link_to 'Edit Profile', edit_on_call_caregiver_path(current_user.loginable) %></li>
+        <li>Search in your area for those in need of help:
+        <%= form_tag :search_primary_caregivers, method: :get do %>
+          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
+        <%= submit_tag "Search" %>
+        <% end %></li>
+        <li><%= link_to 'Manage Your Scheduled Appointments', on_call_caregiver_confirmed_appointments_path(current_user.loginable) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  </nav>
+  <div id="flash-container">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "flash_#{name}" %>
+      <% end %>
+    <% end %>
+  </div>
 
 <%= yield %>
 
 </body>
+
+<div id="footer">
+  <p id="footer-text"> &copy; CommuniCare app made by Courtney Wiggins, David Roberts, and Eric Shou</p>
+</div>
 </html>

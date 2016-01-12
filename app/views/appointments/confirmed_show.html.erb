@@ -1,0 +1,46 @@
+<div class="appointment-details">
+  <h2>Appointment Overview</h2>
+  <p>Appointment with: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.login.full_name %> <%= link_to 'See Profile', primary_caregiver_path(@confirmed_appointment.caregiver_relationship.primary_caregiver) %></p>
+  <p>Date: <%= @confirmed_appointment.convert_to_date %> at <%= @confirmed_appointment.convert_to_time %></p>
+  <p>Duration: <%= @confirmed_appointment.duration %></p>
+  <p>Details: <%= @confirmed_appointment.details %></p>
+  <p>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> </p>
+</div>
+<div class="patient-info">
+  <h2 class="profile-subheader">Patient Overview</h2>
+  <h3>Patient Name: <%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %></h3>
+  <button class="patient">Show More Info</button>
+  <div class="additional-patient-info">
+    <h3>Patient Age</h3>
+    <div><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.age %></div>
+    <h3>Patient Gender</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.gender %></p></p></div>
+    <h3>Patient Ailments</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.ailments %></p></div>
+    <h3>Patient Hobbies</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.hobbies %></p></div>
+    <h3>Patient Background</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.background %></p></div>
+    <h3>Patient Medication</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.medication %></p></div>
+    <h3>Patient Routine</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.routine %></p></div>
+    <h3>Patient Habits</h3>
+    <div><p><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.habits %></p></div>
+  </div>
+</div>
+<div class="contact-pc">
+  <h2>Send A Direct Message To Your CommuniCare Giver Via Text:</h2>
+<%= form_tag('/send_sms', method: 'POST') do %>
+
+<select>
+  <option value="Please Call ASAP">Please Call ASAP</option>
+  <option value="All is Well. Hope your enjoying yourself.">All is Well. Hope your enjoying yourself.</option>
+  <option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well.</option>
+  <option value="<option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy.</option>
+</select>
+<input name="number" type="hidden" value= "<%= @twiliNum %>"/>
+<button type="submit">Click To Send Message</button>
+<% end %>
+
+</div>

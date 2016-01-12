@@ -1,0 +1,76 @@
+<div class="edit-appointment">
+  <%= form_for [@pc, @appointment]  do |f| %>
+    <div>
+      <%= f.label :Details %>
+      <%= f.text_area :details %>
+    </div>
+
+    <div>
+      <%= f.label :Start_Time %>
+      <%= f.time_select :start_time, :combined => true, :minute_interval => 30, ampm: true %>
+    </div>
+    <div>
+    <%=f.label :duration %>:
+    <%= f.select :duration, [['30 minutes','30 Minutes'],['1 Hour','1 hour'],['2 Hours','2 hours'],['3 Hours','3 hours'],['4 Hours','4 hours'],['5 Hours','5 hours'],['6 Hours','6 hours'],['7 Hours','7 hours']] %>
+    </div>
+
+  <%= f.submit "Save Availability"%>
+    <% end %>
+  <div id="delete-area">
+    <button class="delete-appointment">Delete Availability/Appointment</button>
+    <div class="delete-confirmation">
+    <p>Are You Sure?</p>
+    <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
+    <button class="no-delete">No</button>
+    </div>
+  </div>
+</div>
+  <% if @appointment.pc_confirmed && @appointment.occ_confirmed %>
+  <div class="Reminders">
+      <ul>
+        <% @appointment.reminders.each do |reminder|%>
+          <li>Time: <%= reminder.convert_to_time %>, Reminder: <%= reminder.body %>
+            <%= button_to 'Delete Reminder', appointment_reminder_path(@appointment, reminder), method: "delete" %>
+          </li>
+        <% end %>
+      </ul>
+    <h2>Add Reminder To Your Appointment</h2>
+    <%= form_for [@appointment, @reminder]  do |f| %>
+      <div>
+        <%= f.label "Time of Reminder" %>
+        <%= f.time_select :time, :combined => true, :minute_interval => 5, ampm: true %>
+      </div>
+      <div>
+        <%= f.label "Reminder:" %>
+        <%= f.text_area :body %>
+      </div>
+      <div>
+        <%= f.submit 'Add Reminder' %>
+      </div>
+    <%end%>
+  <% end %>
+</div>
+
+<div class="applications">
+  <h2>Applications for this Appointment</h2>
+  <% @appointment.applications.each do |application| %>
+  <div class="application">
+    Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
+    <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
+    <p><%= application.body%></p>
+    <% if !@appointment.pc_confirmed %>
+      <div id="select-appt-area">
+      <button class="select-application">Select Application</button>
+      <div class="select-confirmation">
+        <p>Are You Sure?</p>
+        <%= button_to 'Yes', appointment_select_path(@appointment, application), method: "put", form_class: "yes-select" %>
+        <button class="no-select">No</button>
+        </div>
+    <% elsif application.on_call_caregiver == @appointment.caregiver_relationship.on_call_caregiver %>
+    <p class="selected">Selected!</p>
+      </div>
+    <% end %>
+    </div>
+      </div>
+  <% end %>
+</div>

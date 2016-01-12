@@ -1,4 +1,6 @@
 == README
+Trello: https://trello.com/b/KeXPScoS/communicare
+
 External Resources
 * Integrating Twilio Text Into A Rails App: https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 * Great CSS/style templates: http://templated.co/

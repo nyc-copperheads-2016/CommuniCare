@@ -1,0 +1,41 @@
+<div class="basic-profile-info">
+<%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
+</div>
+
+<div class="on-call-profile-info">
+  <div class="about">
+    <h2 class="profile-subheader">About Me</h2>
+    <h3>Summary</h3>
+    <p><%= @caregiver.about %></p>
+    <h3>Hobbies</h3>
+    <p><%= @caregiver.hobbies %></p>
+  </div>
+
+  <div class="">
+  <h2 class="profile-subheader">My Background</h2>
+    <h3>Relevant Caretaking Experience</h3>
+    <p><%= @caregiver.experience %></p>
+    <h3>Education</h3>
+    <p><%= @caregiver.education %></p>
+    <h3>Credentials</h3>
+    <p><%= @caregiver.credentials %></p>
+    <h3>Specialties</h3>
+    <p><%= @caregiver.specialities %></p>
+  </div>
+</div>
+
+<div id= "badge-count"><p>You have <%= current_user.loginable.badges.count %> badges. Help more people to receive badges and become CERTIFIED."</p></div>
+<ul>
+  <% current_user.loginable.badges.each do |badge| %>
+    <li><%= badge.name %></li>
+  <% end %>
+</ul>
+
+</div>
+<div id="contact-occ">
+  <h2>Contact This CommuniHelper</h2>
+  <%= form_tag on_call_caregiver_send_email_to_path(@caregiver) do %>
+    <%= text_area_tag :message%>
+    <%= submit_tag 'Send Message' %>
+  <% end %>
+</div>
