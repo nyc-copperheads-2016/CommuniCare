@@ -47,6 +47,11 @@ GEM
     combined_time_select (1.0.1)
     concurrent-ruby (1.0.0)
     debug_inspector (0.0.2)
+    delayed_job (4.1.1)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.1.0)
+      activerecord (>= 3.0, < 5)
+      delayed_job (>= 3.0, < 5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -181,6 +186,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   combined_time_select (~> 1.0.1)
+  delayed_job_active_record
   factory_girl_rails
   faker
   geocoder

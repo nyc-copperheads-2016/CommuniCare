@@ -4,7 +4,7 @@ class RemindersController < ApplicationController
     reminder = Reminder.new(reminder_params)
     reminder.appointment = appointment
     reminder.time = appointment.convert_to_datetime(Time.parse(params[:reminder]["time(5i)"]))
-    reminder.save
+    reminder.test_text(reminder.body, reminder.time) if reminder.save
     redirect_to edit_primary_caregiver_appointment_path(appointment.caregiver_relationship.primary_caregiver, appointment)
   end
 

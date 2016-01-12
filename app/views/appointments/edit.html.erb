@@ -38,7 +38,7 @@
     <%= form_for [@appointment, @reminder]  do |f| %>
       <div>
         <%= f.label "Time of Reminder" %>
-        <%= f.time_select :time, :combined => true, :minute_interval => 30, ampm: true %>
+        <%= f.time_select :time, :combined => true, :minute_interval => 5, ampm: true %>
       </div>
       <div>
         <%= f.label "Reminder:" %>
