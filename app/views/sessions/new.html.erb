@@ -1,5 +1,7 @@
-<div class="user-form-container">
-  <h1> Login</h1>
+<div id="session-body">
+<div class="user-login-container">
+  <div id="app-title">CommuniCare</div>
+  <hr style="border-top: dotted 3px;" >
 <%= form_tag sessions_path, class:'login_form' do %>
   <div class="form-group">
     <%= label_tag :email %>
@@ -12,5 +14,4 @@
     <%= submit_tag 'Login', class: 'form-control' %>
    <% end %>
   </div>
-
-
+</div>
