@@ -1,36 +1,36 @@
-<div align="center">
+<div class="user-form-container">
 <h1> Register:</h1>
 
-<div>
+<div class="errors">
   <% if @login.errors.any? %>
   <% @login.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   <% end %>
 </div>
-<h3> <%= form_for @login, :url => {:controller => "logins", :action => "create"} do |f| %>
+<%= form_for @login, :url => {:controller => "logins", :action => "create"} do |f| %>
   <div>
 
-    <div>
+    <div class="form-group">
      <%= f.label :First_Name %>
-     <%= f.text_field :first_name %>
+     <%= f.text_field :first_name, class: 'form-control' %>
     </div>
-    <div>
+    <div class="form-group">
      <%= f.label :Last_Name %>
-     <%= f.text_field :last_name %>
+     <%= f.text_field :last_name, class: 'form-control' %>
     </div>
-    <div>
+    <div class="form-group">
      <%= f.label :Address %>
-     <%= f.text_field :address%>
+     <%= f.text_field :address, class: 'form-control'%>
     </div>
-    <div>
+    <div class="form-group">
      <%= f.label :City %>
-     <%= f.text_field :city %>
+     <%= f.text_field :city, class: 'form-control' %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= f.label :State %>
-     <%= f.select :state, [
+     <%= f.select :state, options_for_select([
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
       ['Arizona', 'AZ'],
@@ -83,34 +83,34 @@
       ['West Virginia', 'WV'],
       ['Wisconsin', 'WI'],
       ['Wyoming', 'WY']
-    ] %>
+    ]), class: 'form-control'%>
     </div>
-    <div>
+    <div class="form-group">
      <%= f.label :Zip %>
-     <%= f.text_field :zipcode %>
+     <%= f.text_field :zipcode, {class: "form-control"} %>
     </div>
 
-    <div>
+    <div class="form-group">
      <%= f.label :Phone %>
-     <%= f.text_field :phone %>
+     <%= f.text_field :phone, class: 'form-control' %>
     </div>
 
-    <div>
+    <div class="form-group">
      <%= f.label :Email %>
-     <%= f.text_field :email %>
+     <%= f.text_field :email, class: 'form-control' %>
     </div>
     <div>
       <%= f.label :Type %>
       <%= f.select :loginable_type, [
       ['Primary Caregiver', 'PrimaryCaregiver'],
       ['CommuniHelper','OnCallCaregiver']
-    ] %>
+    ], class: 'form-control' %>
     </div>
-   <div>
+   <div class="form-group">
     <%=f.label :password %>
-    <%= f.password_field :password %>
-   </div>
-    <%= f.submit 'Login' %>
+    <%= f.password_field :password, class: 'form-control' %>
+   </div class="form-group">
+    <%= f.submit 'Login', class: 'form-control' %>
   <% end %>
   </div>
 </h3>
