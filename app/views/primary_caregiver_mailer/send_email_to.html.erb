@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello from Communicare, <%= @pc.login.full_name %></h1>
+    <p>
+      You're receiving this message because <%= @occ.login.full_name%> has applied to help you. Please see their message below.
+    </p>
+    <p>
+      If you want to review your applications for this appointment, please visit <%= @occ.login.full_name %>'s schedule so that you can send apply and get on their calendar please visit your <a href="<%= @url %>">appointment page.</a>
+    </p>
+    <p>Thanks for using Communicare!</p>
+    <p>
+      <h2><%= @occ.login.full_name %>:</h2>
+      <p><%= @message %></p>
+    </p>
+  </body>
+</html>
