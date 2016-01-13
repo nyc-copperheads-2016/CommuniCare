@@ -1,8 +1,11 @@
-<form>
-  <div class="form-group">
-    <label for="about-page">
-<h1><%= caregiver.login.first_name %> <%= caregiver.login.last_name %></h1>
-<p> Location: <%= caregiver.login.city %>, <%= caregiver.login.state %></p>
-
+<div class="row">
+<div class="profile-basic-image col-md-3">
+  <%= image_tag caregiver.image(:thumb), :class => "img-thumbnail img-responsive" %>
+</div>
+<div class="profile-basic-text col-md-3">
+  <h1><%= caregiver.login.first_name %> <%= caregiver.login.last_name %></h1>
+  <p> Location: <%= caregiver.login.city %>, <%= caregiver.login.state %></p>
+</div>
+</div>
 
 
