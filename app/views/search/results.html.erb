@@ -1,7 +1,7 @@
 <div class="results row">
   <h1>Caretakers in Your Area:</h1>
-  <%@caregiver.each do |caregiver| %>
-    <div class="result row">
+  <%@caregiver.each_with_index do |caregiver, result_number| %>
+    <div class="result row result-<%= result_number%>">
       <div class="profile image col-md-3">
         <% if caregiver.image_file_name %>
           <%= image_tag caregiver.image(:thumb), :class => "img-thumbnail img-responsive" %>
@@ -10,17 +10,16 @@
         <% end %>
       </div>
       <div class="basic-info image col-md-3">
-        <span class="name"><%= caregiver.login.full_name%> </span>
-        <span class="city-state"><%= caregiver.login.city %>, <%= caregiver.login.state %></span>
+        <div class="name"><h4><%= caregiver.login.full_name%> </h4></div>
+        <div class="city-state"><%= caregiver.login.city_state%></div>
       </div>
       <div class="additional-info image col-md-6">
-
       <% if caregiver.login.loginable_type == "OnCallCaregiver" %>
-      <p><%= caregiver.about[0..100]%>...</p>
-      <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default profile-link" %></p>
+      <div><p><%= caregiver.about[0..100]%>...</p></div>
+      <div><p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default profile-link" %></p></div>
       <% else %>
-      <p><%= caregiver.about_me[0..100]%>...</p>
-      <p><%= link_to 'See Profile', primary_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default profile-link" %></p>
+      <div><p><%= caregiver.about_me[0..200]%>...</p></div>
+      <div class="profile-link"><p><%= link_to 'See Profile', primary_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default" %></p></div>
       <% end %>
       </div>
     </div>

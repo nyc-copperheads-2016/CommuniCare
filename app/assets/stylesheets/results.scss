@@ -1,9 +1,21 @@
 .results{
   width: 50%;
-  margin-left: 15%;
+  margin: auto;
 }
 
 .profile-link {
   display: block;
   width: 100%;
+  margin-top: 6rem;
+}
+
+.result {
+  padding:2rem;
+  border-bottom: solid 1px grey;
+  border-left: solid 1px grey;
+  border-right: solid 1px grey;
+}
+
+.result-0 {
+  border-top: solid 1px grey;
 }
