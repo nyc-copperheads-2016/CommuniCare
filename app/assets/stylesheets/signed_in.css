@@ -41,11 +41,12 @@
 
 #profile-pic  {
     position: relative;
-    left: 39%;
-    bottom: 6.5em;
+    left: 115em;
+    bottom: 7.2em;
     transform: scale(0.3, 0.3);
     -ms-transform: scale(0.3, 0.3);
     -webkit-transform: scale(0.3, 0.3);
+    width: 5%;
 
 
 }
