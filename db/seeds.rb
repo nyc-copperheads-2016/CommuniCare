@@ -47,8 +47,6 @@ i=0
 while i < 10
   cities=["Stamford", "Trenton", "Paterson", "Cherry Hill", "Poughkeepsie", "Newark","Brooklyn","Amityville","Hicksville","Freeport", "Bakersfield", "Glen Cove", "Seattle", "Fresno", "Miami","Little Ferry", "Glen Falls", "Kingston", "Long Beach", "Bronx", "Jamaica", "Saint Albans", "Rego Park", "Brooklyn", "New York"]
   states=["CT", "NJ", "NJ", "NJ", "NY", "NJ", "NY","NY","NY","NY", "CA","WA","CA","FL","NJ","NY","NY", "NY", "NY", "NY", "NY", "NY", "NY","NY"]
-  occ = OnCallCaregiver.create!(education: Faker::University.name, credentials: Faker::Company.profession, about: Faker::Lorem.paragraph, specialities: Faker::Lorem.paragraph, experience: Faker::Lorem.paragraph, hobbies: Faker::Lorem.paragraph)
-  occ = Login.create!(email: Faker::Internet.email, password:"123456", password_confirmation: "123456", address: Faker::Address.street_address, city: cities[i], state: states[i], zipcode: Faker::Address.zip, phone: "914-555-5555", loginable_id: occ.id, loginable_type: "OnCallCaregiver", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
   i+=1
 end
 cr = CaregiverRelationship.create!(primary_caregiver: pc1)
