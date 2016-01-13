@@ -41,6 +41,8 @@ gem 'mail'
 #gem for adding rankings and points to users.
 gem 'merit'
 
+#asset serving for production
+gem 'rails_12factor', group: :production
 
 #gem for running code asynchronously
 gem 'delayed_job_active_record'
@@ -49,6 +51,8 @@ gem "daemons"
 
 #gem for allowing photo capability
 gem 'paperclip'
+#gem for storing images on amazon s3 services
+gem 'aws-sdk'
 
 
 group :development, :test do
