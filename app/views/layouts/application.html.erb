@@ -50,7 +50,7 @@
           <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
         </li>
         <div id="welcome-user">Welcome, <%= current_user.email %></div>
-        <p id="profile-pic"><%= image_tag current_user.loginable.image.url(:thumb)%></p>
+        <p id="profile-pic"><%= image_tag current_user.loginable.image(:thumb), :class => "img-thumbnail img-responsive"%></p>
       </ul>
 
         <% else %>
@@ -65,14 +65,15 @@
             <li><%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
           </ul>
         </li>
-        <li><%= link_to 'Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
-          <li id="search-bar-caregiver">Search in your area for caregivers:
-        <%= form_tag :search_on_call_caregivers, method: :get do %>
+        <li><%= link_to 'Scheduled Appointments', on_call_caregiver_confirmed_appointments_path(current_user.loginable) %></li>
+        <li id="search-bar-caregiver">Search in your area for caregivers:
+          <%= form_tag :search_primary_caregivers, method: :get do %>
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
         <%= submit_tag "Search" %>
-        <% end %></li>
-          <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
-        </li>
+        <% end %>
+      </li>
+      <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
+      </li>
         <div id="welcome-user">Welcome, <%= current_user.email %></div>
         <p id="profile-pic"><%= image_tag current_user.loginable.image.url(:thumb)%></p>
       </ul>
