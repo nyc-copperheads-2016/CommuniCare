@@ -1,23 +1,29 @@
-<h1>Caretakers in Your Area:</h1>
-<div class="results">
+<div class="results row">
+  <h1>Caretakers in Your Area:</h1>
   <%@caregiver.each do |caregiver| %>
-  <div class="result"
-    <div class="basic-info">
-<p><%= image_tag caregiver.image.url%>
-      <span class="name"><%= caregiver.login.full_name%> </span>
-      <span class="city-state"><%= caregiver.login.city %>, <%= caregiver.login.state %></span>
-    </div>
-    <div class="additional-info">
+    <div class="result row">
+      <div class="profile image col-md-3">
+        <% if caregiver.image_file_name %>
+          <%= image_tag caregiver.image(:thumb), :class => "img-thumbnail img-responsive" %>
+        <% else %>
+          <%= image_tag "/assets/missing.png", :class => "img-thumbnail img-responsive" %>
+        <% end %>
+      </div>
+      <div class="basic-info image col-md-3">
+        <span class="name"><%= caregiver.login.full_name%> </span>
+        <span class="city-state"><%= caregiver.login.city %>, <%= caregiver.login.state %></span>
+      </div>
+      <div class="additional-info image col-md-6">
 
-    <% if caregiver.login.loginable_type == "OnCallCaregiver" %>
-    <p><%= caregiver.about[0..50]%>...</p>
-    <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id) %></p>
-    <% else %>
-    <p><%= caregiver.about_me[0..50]%>...</p>
-    <p><%= link_to 'See Profile', primary_caregiver_path(caregiver.id) %></p>
-    <% end %>
+      <% if caregiver.login.loginable_type == "OnCallCaregiver" %>
+      <p><%= caregiver.about[0..100]%>...</p>
+      <p><%= link_to 'See Profile', on_call_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default profile-link" %></p>
+      <% else %>
+      <p><%= caregiver.about_me[0..100]%>...</p>
+      <p><%= link_to 'See Profile', primary_caregiver_path(caregiver.id), "role" => "button", class: "btn btn-default profile-link" %></p>
+      <% end %>
+      </div>
     </div>
   <% end %>
-  </div>
 </div>
 
