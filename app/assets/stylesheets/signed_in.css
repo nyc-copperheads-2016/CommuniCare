@@ -1,52 +1,11 @@
-.nav.navbar-nav {
-    height: 3.8em;
-    padding: 0 1.69125em;
-    position: absolute;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
-    transition: -webkit-transform 400ms ease-in-out;
-    transition: transform 400ms ease-in-out;
+.nav.nav-pills.navbar-static-top {
     width: 100%;
-    border-bottom: 1px solid #fff;
-    border-bottom: 1px solid rgba(255,255,255,.1);
-    background-color: #e5e5e5;
-    background-color: rgba(0,0,0,.1);
-    font-family: veranda;
 }
 
 #welcome-user {
-    position: relative;
-    left: 27%;
-    padding-top: 0.5em;
-    font-size: 20px;
-    color: black;
-    font-family: veranda;
-
-}
-
-#sign-out-nav {
-    position: relative;
-    left:50%;
-    font-size: 20px;
-    color: black;
     font-family: veranda;
 }
 
 #search-bar-caregiver {
-    position: relative;
-    padding-top: 0.5em;
-    left: 10%;
-}
-
-#profile-pic  {
-    position: relative;
-    left: 115em;
-    bottom: 7.2em;
-    transform: scale(0.3, 0.3);
-    -ms-transform: scale(0.3, 0.3);
-    -webkit-transform: scale(0.3, 0.3);
-    width: 5%;
-
-
+    font-family: veranda;
 }
