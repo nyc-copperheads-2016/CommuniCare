@@ -2,7 +2,7 @@
   <div class="basic-info">
   <%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
   </div>
-<div class="profile-tabs">
+<div class="profile-tabs  row">
   <ul class="nav-tabs">
     <li class="active"><a data-toggle="tab" href="#about">About Me</a></li>
     <li><a data-toggle="tab" href="#background-info">My Background</a></li>
@@ -40,7 +40,7 @@
     <div id="contact" class="tab-pane">
       <%= form_tag on_call_caregiver_send_email_to_path(@caregiver) do %>
         <%= text_area_tag :message, "", rows: 5, class: "form-control" %>
-        <%= submit_tag 'Send Personal Message', class: "btn btn-default form-control contact-submit" %>
+        <%= submit_tag 'Send Personal Message', class: "btn btn-primary form-control contact-submit" %>
       <% end %>
     </div>
   </div>

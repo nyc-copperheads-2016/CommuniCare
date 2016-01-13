@@ -3,7 +3,10 @@
   margin: auto;
 }
 
-.nav-tabs {
+.nav-tabs a{
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 
@@ -18,7 +21,6 @@
 
 .nav-tabs{
   height: 2.085rem;
-  padding-left: 0;
 }
 
 .nav-tabs > li {
@@ -27,8 +29,10 @@
 
 .contact-submit{
   font-size: 1.25em;
+
 }
 
 .sub-profile-header {
   border-bottom: 1px solid #ddd;
 }
+
