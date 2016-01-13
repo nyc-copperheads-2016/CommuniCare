@@ -1,8 +1,21 @@
 .user-form-container{
-  width: 80%;
+  width: 50%;
   margin: auto;
 }
 
+
 #mainregister {
   background-color: #d6d6c2;
+}
+
+.errors {
+    height: 50px;
+}
+
+.errors ul{
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style: none;
+  padding-left:0;
 }

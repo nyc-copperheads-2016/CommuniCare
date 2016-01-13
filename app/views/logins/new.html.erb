@@ -4,10 +4,12 @@
 <hr style="border-top: dotted 3px;" >
 <div class="errors">
   <% if @login.errors.any? %>
+  <ul>
   <% @login.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   <% end %>
+  </ul>
 </div>
 <%= form_for @login, :url => {:controller => "logins", :action => "create"} do |f| %>
   <div>
