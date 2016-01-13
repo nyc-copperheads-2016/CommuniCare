@@ -52,7 +52,7 @@ gem "daemons"
 #gem for allowing photo capability
 gem 'paperclip'
 #gem for storing images on amazon s3 services
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 
 group :development, :test do
