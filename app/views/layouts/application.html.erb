@@ -19,18 +19,38 @@
 </head>
 <body>
   <nav>
-    <% if logged_in? %>
-      <ul>
-   Welcome, <%= current_user.email %>
-        <li><%= link_to 'Sign Out', logout_path %></li>
-        <% if current_user.loginable_type == "PrimaryCaregiver" %>
-        <li> <%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
-        <li>Search in your area for caregivers:
+  <%if !logged_in? %>
+
+  <ul class="nav nav-pills navbar-static-top">
+  <li id="app-title"> CommuniCare </li>
+  <li role="presentation"><%= link_to 'Sign Up', new_login_path%></li>
+  <li role="presentation"><%= link_to 'Login', new_session_path %></li>
+  <li role="presentation"><a href="#">About</a></li>
+  </ul>
+    <% else %>
+      <% if current_user.loginable_type == "PrimaryCaregiver" %>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li id="app-title"> CommuniCare </li>
+        <li><%= link_to 'Home', root_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Show Profile',primary_caregiver_path(current_user.loginable) %></li>
+            <li><%= link_to 'Edit Profile', edit_primary_caregiver_path(current_user.loginable) %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
+          <li id="search-bar-caregiver">Search in your area for caregivers:
         <%= form_tag :search_on_call_caregivers, method: :get do %>
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
         <%= submit_tag "Search" %>
         <% end %></li>
-        <li> <%= link_to 'Manage Availability and Appointments', primary_caregiver_appointments_path(current_user.loginable) %></li>
+          <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
+        </li>
+        <div id="welcome-user">Welcome, <%= current_user.email %></div>
+        <p id="profile-pic"><%= image_tag current_user.loginable.image.url(:thumb)%></p>
+      </ul>
 
         <% else %>
         <li> <%= link_to 'Edit Profile', edit_on_call_caregiver_path(current_user.loginable) %></li>
@@ -45,6 +65,7 @@
     <% end %>
 
   </nav>
+
   <div id="flash-container">
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
@@ -55,6 +76,11 @@
 <div id="yield"
   <%= yield %>
 </div>
+
+
+<%= yield %>
+
+
 </body>
 
 </html>
