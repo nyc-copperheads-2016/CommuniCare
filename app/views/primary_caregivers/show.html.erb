@@ -1,4 +1,4 @@
-<div id="profile-show">
+<div id="profile-primary-show">
   <div class="basic-profile-info">
   <%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
   </div>
@@ -7,13 +7,16 @@
     <div class="about">
       <h2 class="profile-subheader">About Me</h2>
       <h3>Summary</h3>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show</button>
+      <div id="demo" class="collapse">
       <p><%= @caregiver.about_me %></p>
-    </div>
-    <div>
-      <p><%= image_tag @caregiver.image.url(:thumb)%></p>
     </div>
     <div class="patient-info">
     <h2 class="profile-subheader">Patient Overview</h2>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#patients">Show</button>
+      <div id="patients" class="collapse">
+      <h3>Patient Name</h3>
+      <div><p><%= @caregiver.patient.name %></p></div>
       <h3>Patient Age</h3>
       <div><p><%= @caregiver.patient.age %></p></div>
       <h3>Patient Gender</h3>
@@ -24,6 +27,7 @@
       <div><p><%= @caregiver.patient.hobbies %></p></div>
       <h3>Patient Background</h3>
       <div><p><%= @caregiver.patient.background %></p></div>
+      </div>
     </div>
   </div>
 

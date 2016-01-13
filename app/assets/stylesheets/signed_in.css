@@ -2,6 +2,11 @@
     width: 100%;
 }
 
+.navbar-collapse {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 #welcome-user {
     font-family: veranda;
 }
