@@ -9,7 +9,7 @@
     <p><%= @caregiver.about_me %></p>
   </div>
   <div>
-    <p><%= image_tag @caregiver.image.url%></p>
+    <p><%= image_tag @caregiver.image.url(:thumb)%></p>
   </div>
   <div class="patient-info">
   <h2 class="profile-subheader">Patient Overview</h2>
