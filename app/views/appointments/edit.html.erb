@@ -2,7 +2,7 @@
 <div class="row">
 <h1 align="center ">Appointment on <%= @appointment.convert_to_date%></h1>
 <div class="edit-appointment col-md-6">
-  <div class="edit-header">
+  <div class="edit">
     <h2>Edit Details</h2>
   </div>
   <%= form_for [@pc, @appointment]  do |f| %>
@@ -23,7 +23,7 @@
   <%= f.submit "Save Availability", class: 'col-md-6 btn btn-default' %>
     <% end %>
   <div id="delete-area">
-    <button class="delete-appointment col-md-6 btn btn-default"">Delete Appointment</button>
+    <button class="delete-appointment col-md-6 btn btn-default">Delete Appointment</button>
     <div class="delete-confirmation">
     <p>Are You Sure?</p>
     <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
@@ -55,18 +55,20 @@
         <%= f.time_select :time, :combined => true, :minute_interval => 5, ampm: true %>
       </div>
       <div>
-        <%= f.submit 'Add Reminder' %>
+        <%= f.submit 'Add Reminder', class: 'form-control'%>
       </div>
     <%end%>
+  </div>
   <% end %>
-</div>
 </div>
 <div class="applications">
   <h2>Applications for this Appointment</h2>
   <% @appointment.applications.each do |application| %>
-  <div class="application">
+  <div class="application row">
+    <div class="col-md-3">
     <p><%= image_tag application.on_call_caregiver.image.url(:thumb), :class => "img-thumbnail img-responsive" %></p>
-
+  </div>
+    <div class="col-md-9">
     Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
     <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
     <p><%= application.body%></p>
@@ -82,7 +84,10 @@
     <p class="selected">Selected!</p>
       </div>
     <% end %>
+  </div>
     </div>
+    <div class="col-md-3"></div>
+      </div>
       </div>
   <% end %>
 </div>
