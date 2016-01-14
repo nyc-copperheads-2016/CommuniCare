@@ -1,6 +1,3 @@
-<div align="center">
-<h1> Edit Profile:</h1>
-
 <div>
   <% if @occ.errors.any? %>
   <% @occ.errors.full_messages.each do |msg| %>
@@ -9,32 +6,35 @@
   <% end %>
 </div>
 
+<div class="occ-edit">
+<div class="col-md-6">
+<h1> Edit Profile:</h1>
 <h3> <%= form_for @occ do |f| %>
-  <div>
+  <div class="form-group">
     <%= f.label :Education %>
     <%= f.text_field :education %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :About %>
     <%= f.text_field :about %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :Credentials %>
     <%= f.text_field :credentials %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :Specialty %>
     <%= f.text_field :specialities %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :Experience %>
     <%= f.text_area :experience %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :Hobbies %>
     <%= f.text_area :hobbies %>
   </div>
@@ -43,4 +43,6 @@
 
 <%= f.submit "Update Profile"%>
   <% end %>
-
+</div>
+</div>
+</div>
