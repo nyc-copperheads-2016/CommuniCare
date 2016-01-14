@@ -48,7 +48,10 @@ p:first-letter {
     background-color: #e5e5e5;
     background-color: rgba(0,0,0,.1);
 }
-
+.nav.nav-pills.navbar-static-top {
+  border-bottom: 1px solid;
+  border-bottom-width: thin;
+}
 
 .nav.nav-pills.navbar-static-top li a {
   color: black;
