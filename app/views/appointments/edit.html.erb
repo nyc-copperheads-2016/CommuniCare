@@ -22,12 +22,10 @@
    <div class="row">
   <%= f.submit "Save Availability", class: 'col-md-6 btn btn-default' %>
     <% end %>
+
   <div id="delete-area">
-    <button class="delete-appointment col-md-6 btn btn-default">Delete Appointment</button>
+    <%= button_to 'Delete Appointment', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", class: "delete-appointment col-md-6 btn btn-default" %>
     <div class="delete-confirmation">
-    <p>Are You Sure?</p>
-    <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
-    <button class="no-delete btn btn-default">No</button>
     </div>
   </div>
 </div>

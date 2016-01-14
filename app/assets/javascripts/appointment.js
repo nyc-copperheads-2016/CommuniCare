@@ -1,13 +1,14 @@
 $(document).ready(function() {
-  $('.delete-confirmation').hide()
-    $('.delete-appointment').click(function(event){
-      $('.delete-appointment').hide()
-      $('.delete-confirmation').show()
-      $('.no-delete').click(function(event){
-        $('.delete-appointment').show()
-        $('.delete-confirmation').hide()
-      })
-    })
+  // $('.delete-confirmation').hide()
+  //   $('.delete-appointment').click(function(event){
+  //     debugger
+  //     $('.delete-appointment').hide()
+  //     $('.delete-confirmation').show()
+  //     $('.no-delete').click(function(event){
+  //       $('.delete-appointment').show()
+  //       $('.delete-confirmation').hide()
+  //     })
+  //   })
 
   $('.select-confirmation').hide()
     $('.select-application').click(function(event){
