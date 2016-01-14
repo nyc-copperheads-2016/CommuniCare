@@ -1,5 +1,6 @@
 <div id="mainregister">
 <div class="user-form-container">
+  <h1>Register</h1>
 <hr style="border-top: dotted 3px;" >
 <div class="errors">
   <% if @login.errors.any? %>
@@ -112,7 +113,7 @@
     <%=f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
    </div class="form-group">
-    <%= f.submit 'Login', class: 'form-control' %>
+    <%= f.submit 'Register', class: 'form-control' %>
   <% end %>
   </div>
 </h3>
