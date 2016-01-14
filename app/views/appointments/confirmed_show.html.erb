@@ -39,10 +39,9 @@
   <option value="Please Call ASAP">Please Call ASAP</option>
   <option value="All is Well. Hope your enjoying yourself.">All is Well. Hope your enjoying yourself.</option>
   <option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is doing well.</option>
-  <option value="<option value="<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy.</option>
+  <option value="<option value=<%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %>is unhappy."><%= @confirmed_appointment.caregiver_relationship.primary_caregiver.patient.name %> is unhappy."</option>
 </select>
 <input name="number" type="hidden" value= "<%= @twiliNum %>"/>
 <button type="submit">Click To Send Message</button>
-<% end %>
-
+  <% end %>
 </div>
