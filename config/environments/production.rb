@@ -66,15 +66,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'hidden-beach-6299.herokuapp.com' }
   config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :domain               => "gmail.com",
-      :user_name            => ENV["GMAIL_USER"],
-      :password             => ENV["GMAIL_PASSWORD"],
-      :authentication       => :plain,
-      :enable_starttls_auto => true
+  :user_name => 'communicare123',
+  :password => 'care1234',
+  :domain => 'devbootcamp.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
 }
-
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
