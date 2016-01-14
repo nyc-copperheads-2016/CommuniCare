@@ -8,7 +8,7 @@
   <%= form_for [@pc, @appointment]  do |f| %>
     <div class="form-group">
       <%= f.label :Details %>
-      <%= f.text_area :details, class: 'form-control'  %>
+      <%= f.text_area :details, class: 'form-control', rows: "7"%>
     </div>
 
     <div class="form-group">
@@ -64,10 +64,10 @@
 <div class="applications">
   <h2>Applications for this Appointment</h2>
   <% @appointment.applications.each do |application| %>
-  <div class="application row">
-    <div class="col-md-3">
-    <p><%= image_tag application.on_call_caregiver.image.url(:thumb), :class => "img-thumbnail img-responsive" %></p>
-  </div>
+    <div class="application row">
+      <div class="col-md-3">
+      <p><%= image_tag application.on_call_caregiver.image.url(:thumb), :class => "img-thumbnail img-responsive" %></p>
+    </div>
     <div class="col-md-9">
     Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
     <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
@@ -80,14 +80,13 @@
         <%= button_to 'Yes', appointment_select_path(@appointment, application), method: "put", form_class: "yes-select" %>
         <button class="no-select">No</button>
         </div>
+       </div>
     <% elsif application.on_call_caregiver == @appointment.caregiver_relationship.on_call_caregiver %>
     <p class="selected">Selected!</p>
-      </div>
     <% end %>
-  </div>
-    </div>
-    <div class="col-md-3"></div>
       </div>
+    <div class="col-md-3"></div>
+    </div>
       </div>
   <% end %>
 </div>
