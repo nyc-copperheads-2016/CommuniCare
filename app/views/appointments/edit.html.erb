@@ -1,62 +1,74 @@
-<div class="edit-appointment">
+<div class="edit-appointment-container">
+<div class="row">
+<h1 align="center ">Appointment on <%= @appointment.convert_to_date%></h1>
+<div class="edit-appointment col-md-6">
+  <div class="edit">
+    <h2>Edit Details</h2>
+  </div>
   <%= form_for [@pc, @appointment]  do |f| %>
-    <div>
+    <div class="form-group">
       <%= f.label :Details %>
-      <%= f.text_area :details %>
+      <%= f.text_area :details, class: 'form-control'  %>
     </div>
 
-    <div>
-      <%= f.label :Start_Time %>
+    <div class="form-group">
+      <%= f.label "Start Time" %>
       <%= f.time_select :start_time, :combined => true, :minute_interval => 30, ampm: true %>
     </div>
-    <div>
+    <div class="form-group">
     <%=f.label :duration %>:
     <%= f.select :duration, [['30 minutes','30 Minutes'],['1 Hour','1 hour'],['2 Hours','2 hours'],['3 Hours','3 hours'],['4 Hours','4 hours'],['5 Hours','5 hours'],['6 Hours','6 hours'],['7 Hours','7 hours']] %>
     </div>
-
-  <%= f.submit "Save Availability"%>
+   <div class="row">
+  <%= f.submit "Save Availability", class: 'col-md-6 btn btn-default' %>
     <% end %>
   <div id="delete-area">
-    <button class="delete-appointment">Delete Availability/Appointment</button>
+    <button class="delete-appointment col-md-6 btn btn-default">Delete Appointment</button>
     <div class="delete-confirmation">
     <p>Are You Sure?</p>
     <%= button_to 'Yes', primary_caregiver_appointment_path(@pc, @appointment), method: "delete", form_class: "yes-delete" %>
-    <button class="no-delete">No</button>
+    <button class="no-delete btn btn-default">No</button>
     </div>
   </div>
 </div>
+</div>
   <% if @appointment.pc_confirmed && @appointment.occ_confirmed %>
-  <div class="Reminders">
+  <div class="Reminders col-md-6">
       <ul>
         <% @appointment.reminders.each do |reminder|%>
           <li>Time: <%= reminder.convert_to_time %>, Reminder: <%= reminder.body %>
-            <%= button_to 'Delete Reminder', appointment_reminder_path(@appointment, reminder), method: "delete" %>
+            <%= button_to 'Delete Reminder', appointment_reminder_path(@appointment, reminder), method: "delete", class: "btn btn-default" %>
           </li>
         <% end %>
       </ul>
-    <h2>Add Reminder To Your Appointment</h2>
-    <%= form_for [@appointment, @reminder]  do |f| %>
-      <div>
+    <div class="edit-header">
+      <h2>Add Text Reminder To Your Appointment</h2>
+      <p>Your selected caretaker will be sent a text reminder on the day of your appointment with the message you supply:</p>
+    </div>
+      <%= form_for [@appointment, @reminder]  do |f| %>
+      <div class="form-group  ">
+        <%= f.label "Reminder:" %>
+        <%= f.text_area :body, class: 'form-control'  %>
+      </div>
+      <div class="form-group">
         <%= f.label "Time of Reminder" %>
         <%= f.time_select :time, :combined => true, :minute_interval => 5, ampm: true %>
       </div>
       <div>
-        <%= f.label "Reminder:" %>
-        <%= f.text_area :body %>
-      </div>
-      <div>
-        <%= f.submit 'Add Reminder' %>
+        <%= f.submit 'Add Reminder', class: 'form-control'%>
       </div>
     <%end%>
+  </div>
   <% end %>
 </div>
-
 <div class="applications">
   <h2>Applications for this Appointment</h2>
   <% @appointment.applications.each do |application| %>
-  <div class="application">
-    <p><%= image_tag application.on_call_caregiver.image.url(:thumb)%></p>
-
+  <div class="application row">
+    <div class="col-md-3">
+    <p><%= image_tag application.on_call_caregiver.image.url(:thumb), :class => "img-thumbnail img-responsive" %></p>
+  </div>
+    <div class="col-md-9">
     Application from: <%=application.on_call_caregiver.login.full_name%> in <%=application.on_call_caregiver.login.city_state%>:
     <%= link_to 'See Profile', on_call_caregiver_path(application.on_call_caregiver) %>
     <p><%= application.body%></p>
@@ -72,7 +84,10 @@
     <p class="selected">Selected!</p>
       </div>
     <% end %>
+  </div>
     </div>
+    <div class="col-md-3"></div>
+      </div>
       </div>
   <% end %>
 </div>

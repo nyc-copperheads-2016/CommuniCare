@@ -1,3 +1,20 @@
 .simple-calendar {
   padding-top: 7em;
 }
+
+
+.appointment-container {
+  width: 30%;
+  margin: auto;
+}
+
+
+.edit-appointment-container {
+  width: 50%;
+  margin: auto;
+}
+
+.edit-header {
+  height: 200px;
+}
+

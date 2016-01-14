@@ -45,7 +45,7 @@
           <li id="search-bar-caregiver">Search in your area for caregivers:
         <%= form_tag :search_on_call_caregivers, method: :get do %>
           <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
-        <%= submit_tag "Search" %>
+        <%= submit_tag "Search", class: "btn btn-default" %>
         <% end %></li>
           <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
         </li>
@@ -67,8 +67,8 @@
         <li><%= link_to 'Scheduled Appointments', on_call_caregiver_confirmed_appointments_path(current_user.loginable) %></li>
         <li id="search-bar-caregiver">Search in your area for caregivers:
           <%= form_tag :search_primary_caregivers, method: :get do %>
-          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]])%>
-        <%= submit_tag "Search" %>
+          <%= select_tag :distance, options_for_select([["5 Miles",5], ["10 Miles",10], ["20 Miles",20], ["50 Miles",50], ["100 Miles",100]]) %>
+        <%= submit_tag "Search", class: "btn btn-default"  %>
         <% end %>
       </li>
       <li id= "sign-out-nav"><%= link_to 'Sign Out', logout_path %></li>
