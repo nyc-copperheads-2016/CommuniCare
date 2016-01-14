@@ -6,8 +6,11 @@
   font-family:'Josefin Sans',Arial,sans-serif;
   font-size: 1.25em;
   list-style-type: none;
+  height: 100%
 }
 
 #yield ul{
   list-style-type: none;
 }
+
+html,body { height:100%; }
