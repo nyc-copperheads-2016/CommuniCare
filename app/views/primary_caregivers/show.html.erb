@@ -1,10 +1,15 @@
-<div id="profile-primary-show">
-  <div class="basic-profile-info">
-  <%=render :partial=> 'caregivers/login_info', locals: {caregiver: @caregiver}%>
-  </div>
-
-  <div class="primary-profile-info">
-    <div class="about">
+<div class="show-container">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <p id="profile-pic"><%= image_tag current_user.loginable.image(:thumb), :class => "img-circle img-thumbnail img-responsive"%></p>
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+        <div class="about">
+          <h2 class="page-header">Profile Page</h2>
       <h2 class="profile-subheader">About Me</h2>
       <h3>Summary</h3>
       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show</button>
@@ -29,7 +34,9 @@
       <div><p><%= @caregiver.patient.background %></p></div>
       </div>
     </div>
+    </div>
   </div>
+</div>
 
   <div class="appointments" id="calendar">
     <%= month_calendar events: @caregiver.appointments do |date, appointments| %>

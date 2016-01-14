@@ -1,5 +1,7 @@
+<div id="schedule-container">
 <div align="center" class= "schedule-basic-text col-md-3">
   <h1>Schedule an Appointment</h1>
+    <p id="schedule-text">Make a difference.</p>
 </div>
 <div id='calendar'>
     <%= month_calendar events: @pc.appointments do |date, appointments| %>
@@ -21,4 +23,5 @@
       </div>
       <% end %>
   <% end %>
+</div>
 </div>
