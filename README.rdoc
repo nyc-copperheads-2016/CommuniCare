@@ -1,5 +1,5 @@
 == CommuniCare
-CommuniCare by David, Courtney, and Eric
+by David, Courtney, and Eric
 
 CommuniCare is a web application designed to connect users in need of caretaking services for their loved ones with other users in the nearby community. Users can sign up as Primary Caregivers--those looking to find help from someone locally to take care of their loved one Users can also sign up as CommuniHelpers--those looking to help their community and provide caretaking services for those in need.
 
