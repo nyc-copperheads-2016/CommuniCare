@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe OnCallCaregiver, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	it { should have_one(:login)}
+	it { should have_many(:appointments).through(:caregiver_relationships)}
+	it { should have_many(:caregiver_relationships)}
+	it { should have_many(:badges)}
+
 end
