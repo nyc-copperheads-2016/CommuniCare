@@ -1,43 +1,29 @@
-== README
-Trello: https://trello.com/b/KeXPScoS/communicare
+== CommuniCare
+by David Roberts, Courtney Wiggins, and Eric Shou
 
-External Resources
-* Integrating Twilio Text Into A Rails App: https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
-* Great CSS/style templates: http://templated.co/
-* List of Useful Responsive List and Navigation Menus: http://exisweb.net/incredibly-useful-list-of-responsive-navigation-and-menu-patterns
+CommuniCare is a web application designed to connect users in need of caretaking services for their loved ones with other users in the nearby community. Users can sign up as Primary Caregivers--those looking to find help from someone locally to take care of their loved one Users can also sign up as CommuniHelpers--those looking to help their community and provide caretaking services for those in need.
 
+Tech Stack:
 
+    Ruby on Rails
+    Javascript/jQuery
+    Bootstrap
 
+Workflow:
 
+    Pairing
+    Agile
+Basic User Stories:
 
+Primary Caregiver Experience:
+    As a Primary Caregiver, I want to search for On Call Caregivers by location, so that I can proactively fit my relief need.
+    As a Primary Caregiver, I want to schedule availability through a calendar interface so that I can show CommuniHelpers when they are needed.
+    As a Primary Caregiver, I want to select a CommuniHelper, based on how closely they fit my needs
+    As a Primary Caregiver, I want to be notified of all scheduling events via email notification.
+    As a Primary Caregiver, I would like to set reminders that will get sent to the selected Communihelper on the appointment date so that they remember responsibilities they may forget.
 
+CommuniHelper Experience:
 
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    As a CommuniHelper, I want to search by location for Primary Caregivers that require services
+    As a CommuniHelper, I want to view a Primary Caregivers availability calendar so that I can apply to help them. 
+    As a CommuniHelper with an appointment, I would an appointment page that shows vital appointment details.
