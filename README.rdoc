@@ -27,3 +27,7 @@ CommuniHelper Experience:
     As a CommuniHelper, I want to search by location for Primary Caregivers that require services
     As a CommuniHelper, I want to view a Primary Caregivers availability calendar so that I can apply to help them. 
     As a CommuniHelper with an appointment, I would an appointment page that shows vital appointment details.
+    
+    
+***A note about testing:
+This project was created via behavior driven development to do have a such a small team and such a small timeline. RSpec tests were written after an MVP (minimum viable product) was delivered and are currently in progress (as of 1/21/16).
